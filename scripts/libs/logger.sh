@@ -13,7 +13,7 @@ logger() {
         [ -n "$device_name" ] && log_text="$log_text($device_name)"
         [ -n "$push_TG" ] && {
             url="https://api.telegram.org/bot${push_TG}/sendMessage"
-            [ "$push_TG" = 'publictoken' ] && url='https://tgbot.jwsc.eu.org/publictoken/sendMessage'
+            [ "$push_TG" = 'publictoken' ] && url='' # TG推送服务需自建,原服务已移除
             content="{\"chat_id\":\"${chat_ID}\",\"text\":\"$log_text\"}"
             web_json_post "$url" "$content" &
         }

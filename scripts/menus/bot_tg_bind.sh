@@ -14,7 +14,7 @@ private_bot() {
 public_bot() {
 	echo -e "请向机器人：\033[32;4mhttps://t.me/ShellCrashtg_bot\033[0m"
 	TOKEN=publictoken
-	url_tg=https://tgbot.jwsc.eu.org/publictoken/getUpdates
+	url_tg= # TG Bot 服务需自建,原服务已移除
 }
 tg_push_token(){
 	push_TG="$TOKEN"
