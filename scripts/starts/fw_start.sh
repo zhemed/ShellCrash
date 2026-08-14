@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 #获取局域网host地址
 . "$CRASHDIR"/starts/fw_getlanip.sh && getlanip

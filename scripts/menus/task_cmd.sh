@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 #加载全局变量
 [ -z "$CRASHDIR" ] && CRASHDIR=$( cd $(dirname $0);cd ..;pwd)

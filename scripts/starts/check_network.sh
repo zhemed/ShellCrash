@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 check_network() { #检查是否联网
     for text in 223.5.5.5 1.2.4.8 dns.alidns.com doh.pub; do

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 check_port(){
 	if [ "$1" -gt 65535 -o "$1" -le 1 ]; then

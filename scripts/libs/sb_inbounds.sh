@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ "$vms_service" = ON ] && {
 	[ -n "$vms_ws_path" ] && transport=', "transport": { "type": "ws", "path": "'"$vms_ws_path"'" }'

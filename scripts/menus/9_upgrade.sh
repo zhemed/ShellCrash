@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_9_UPGRADE_LOADED" ] && return
 __IS_MODULE_9_UPGRADE_LOADED=1
@@ -10,7 +10,7 @@ __IS_MODULE_9_UPGRADE_LOADED=1
 
 error_down(){
 	echo -e "\033[33m请尝试切换至其他安装源后重新下载！\033[0m"
-	echo -e "或者参考 \033[32;4mhttps://juewuy.github.io/bdaz\033[0m 进行本地安装！"
+	echo -e "或者参考 \033[32;4mhttps://github.com/zhemed/ShellCrash/bdaz\033[0m 进行本地安装！"
 	sleep 1
 }
 
@@ -67,7 +67,7 @@ upgrade() {
         6)
             echo "-----------------------------------------------"
             echo -e "PAC配置链接为：\033[30;47m http://$host:$db_port/ui/pac \033[0m"
-            echo -e "PAC的使用教程请参考：\033[4;32mhttps://juewuy.github.io/ehRUeewcv\033[0m"
+            echo -e "PAC的使用教程请参考：\033[4;32mhttps://github.com/zhemed/ShellCrash/ehRUeewcv\033[0m"
             sleep 2
             ;;
         7)
@@ -172,7 +172,7 @@ setcpucore(){ #手动设置内核架构
 	echo -e "\033[31m仅适合脚本无法正确识别核心或核心无法正常运行时使用！\033[0m"
 	echo -e "当前可供在线下载的处理器架构为："
 	echo $cpucore_list | awk -F " " '{for(i=1;i<=NF;i++) {print i" "$i }}'
-	echo -e "不知道如何获取核心版本？请参考：\033[36;4mhttps://juewuy.github.io/bdaz\033[0m"
+	echo -e "不知道如何获取核心版本？请参考：\033[36;4mhttps://github.com/zhemed/ShellCrash/bdaz\033[0m"
 	echo "-----------------------------------------------"
 	read -p "请输入对应数字 > " num
 	[ -n "$num" ] && setcpucore=$(echo $cpucore_list | awk '{print $"'"$num"'"}' )
@@ -348,7 +348,7 @@ setcustcore(){ #自定义内核
 		checkcustcore
 	;;
 	4)
-		project=juewuy/ShellCrash
+		project=zhemed/ShellCrash
 		api_tag=clash.premium.latest
 		crashcore=clashpre
 		checkcustcore
@@ -850,7 +850,7 @@ setdb() {
             ;;
         2)
             db_type=meta_xd
-            setconfig external_ui_url "https://raw.githubusercontent.com/juewuy/ShellCrash/update/bin/dashboard/meta_xd.tar.gz"
+            setconfig external_ui_url "https://raw.githubusercontent.com/zhemed/ShellCrash/main/bin/dashboard/meta_xd.tar.gz"
             dbdir
             ;;
         3)
@@ -1018,7 +1018,7 @@ setserver() {
 			echo "-----------------------------------------------"
 			echo -e "\033[33m开发版未经过妥善测试，可能依然存在大量bug！！！\033[0m"
 			echo -e "\033[36m如果你没有足够的耐心或者测试经验，切勿使用此版本！\033[0m"
-			echo -e "请务必加入我们的讨论组：\033[32;4mhttps://t.me/ShellClash\033[0m"
+			echo -e "请务必加入我们的讨论组：\033[32;4mhttps://github.com/zhemed/ShellCrash\033[0m"
 			read -p "是否依然切换到开发版？(1/0) > " res
 			if [ "$res" = 1 ];then
 				release_type=dev
@@ -1043,7 +1043,7 @@ setserver() {
 			if [ -n "$url_id" ] && [ "$url_id" -lt 200 ];then
 				echo -ne "\033[32m正在获取版本信息！\033[0m\r"
 				. "$CRASHDIR"/libs/web_get_lite.sh
-				web_get_lite https://github.com/juewuy/ShellCrash/tags | grep -o 'releases/tag/.*data'|awk -F '/' '{print $3}'|sed 's/".*//g' > "$TMPDIR"/tags
+				web_get_lite https://github.com/zhemed/ShellCrash/tags | grep -o 'releases/tag/.*data'|awk -F '/' '{print $3}'|sed 's/".*//g' > "$TMPDIR"/tags
 				if [ "$?" = "0" ];then
 					echo -e "\033[31m请选择想要回退至的具体版本：\033[0m"
 					cat "$TMPDIR"/tags | awk '{print " "NR" "$1}'

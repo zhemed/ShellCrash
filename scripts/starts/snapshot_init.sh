@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 CRASHDIR="$(uci get firewall.ShellCrash.path | sed 's/\/starts.*//')"
 #防止提前自启

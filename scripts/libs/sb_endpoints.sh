@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ "$ts_service" = ON ] && ! grep -q '"tailscale"' "$CRASHDIR"/jsons/endpoints.json 2>/dev/null && {
 	[ "$ts_subnet" = true ] && {

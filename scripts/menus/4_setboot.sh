@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_4_SETBOOT_LOADED" ] && return
 __IS_MODULE_4_SETBOOT_LOADED=1

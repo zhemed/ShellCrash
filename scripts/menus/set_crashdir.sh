@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 . /tmp/SC_tmp/libs/check_dir_avail.sh
 [ -n "$(echo -e | grep e)" ] && echo=echo || echo='echo -e'

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 #初始化目录
 [ -z "$CRASHDIR" ] && CRASHDIR=$(

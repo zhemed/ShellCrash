@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 RESERVED_IP=$(echo $reserve_ipv4 | sed 's/[[:space:]]\+/, /g')
 RESERVED_IP6=$(echo "$reserve_ipv6 $host_ipv6" | sed 's/[[:space:]]\+/, /g')

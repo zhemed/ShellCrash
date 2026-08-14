@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 #meta内核vmess入站生成
 [ "$vms_service" = ON ] && {

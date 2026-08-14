@@ -5,8 +5,8 @@
 
   <p align="center">
 
-  <a target="_blank" href="https://github.com/juewuy/ShellCrash/releases">
-    <img src="https://img.shields.io/github/release/juewuy/ShellCrash.svg?style=flat-square&label=ShellCrash&colorB=green">
+  <a target="_blank" href="https://github.com/zhemed/ShellCrash/releases">
+    <img src="https://img.shields.io/github/release/zhemed/ShellCrash.svg?style=flat-square&label=ShellCrash&colorB=green">
   </a>
 </p>
 

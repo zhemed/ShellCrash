@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_1_START_LOADED" ] && return
 __IS_MODULE_1_START_LOADED=1

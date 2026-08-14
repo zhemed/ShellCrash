@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_6_CORECONFIG_LOADED" ] && return
 __IS_MODULE_6_CORECONFIG_LOADED=1
@@ -238,7 +238,7 @@ setproxies(){ #自定义clash节点
 		echo "-----------------------------------------------"
 		echo -e "\033[33m注意节点格式必须是单行,不包括括号,name:必须写在最前,例如：\033[0m"
 		echo -e "\033[36m【name: \"test\", server: 192.168.1.1, port: 12345, type: socks5, udp: true】\033[0m"
-		echo -e "更多写法请参考：\033[32m https://juewuy.github.io/ \033[0m"
+		echo -e "更多写法请参考：\033[32m https://github.com/zhemed/ShellCrash/ \033[0m"
 		read -p "请输入节点 > " proxy_state_set
 		if [ -n "$(echo $proxy_state_set | grep "#" )" ];then
 			echo -e "\033[33m绝对禁止包含【#】号！！！\033[0m"
@@ -744,7 +744,7 @@ set_singbox_adv(){ #自定义singbox配置文件
 		echo -e "\033[36mendpoints inbounds outbounds providers route services\033[0m"
 		echo -e "将相应json文件放入\033[33m$JSONSDIR\033[0m目录后即可在启动时自动加载"
 		echo "-----------------------------------------------"
-		echo -e "使用前请务必参考配置教程:\033[32;4m https://juewuy.github.io/nWTjEpkSK \033[0m"
+		echo -e "使用前请务必参考配置教程:\033[32;4m https://github.com/zhemed/ShellCrash/nWTjEpkSK \033[0m"
 }
 override(){ #配置文件覆写
 	[ -z "$rule_link" ] && rule_link=1

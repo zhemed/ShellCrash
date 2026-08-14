@@ -33,15 +33,15 @@ RUN set -eux; \
       linux/386)    K=386 S=i486;; \
       *) echo "unsupported $TARGETPLATFORM" && exit 1 ;; \
     esac; \
-    curl -fsSL "https://github.com/juewuy/ShellCrash/raw/update/bin/meta/clash-linux-${K}.tar.gz" -o /tmp/CrashCore.tar.gz; \
+    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/meta/clash-linux-${K}.tar.gz" -o /tmp/CrashCore.tar.gz; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_V}/s6-overlay-${S}.tar.xz" -o /tmp/s6_arch.tar.xz; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_V}/s6-overlay-noarch.tar.xz" -o /tmp/s6_noarch.tar.xz && ls -l /tmp
 
 #安装面板文件
 RUN set -eux; \
     mkdir -p /etc/ShellCrash/ruleset /etc/ShellCrash/ui; \
-    curl -fsSL "https://github.com/juewuy/ShellCrash/raw/update/bin/geodata/mrs.tar.gz" | tar -zxf - -C /etc/ShellCrash/ruleset; \
-    curl -fsSL "https://github.com/juewuy/ShellCrash/raw/update/bin/dashboard/zashboard.tar.gz" | tar -zxf - -C /etc/ShellCrash/ui
+    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/geodata/mrs.tar.gz" | tar -zxf - -C /etc/ShellCrash/ruleset; \
+    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/dashboard/zashboard.tar.gz" | tar -zxf - -C /etc/ShellCrash/ui
 	  
 ############################
 # Stage 2: runtime
@@ -50,7 +50,7 @@ FROM alpine:latest
 
 ARG TZ=Asia/Shanghai
 
-LABEL org.opencontainers.image.source="https://github.com/juewuy/ShellCrash"
+LABEL org.opencontainers.image.source="https://github.com/zhemed/ShellCrash"
 #安装依赖
 RUN apk add --no-cache \
     wget \

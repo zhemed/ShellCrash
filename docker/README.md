@@ -15,7 +15,7 @@ docker run -d \
   --name shellcrash \
   -p 7890:7890 \
   -p 9999:9999 \
-  juewuy/shellcrash:latest
+  zhemed/shellcrash:latest
 ```
 
 ------
@@ -60,7 +60,7 @@ docker run -d \
   --sysctl net.ipv4.ip_forward=1 \
   --device /dev/net/tun:/dev/net/tun \
   --restart unless-stopped \
-  juewuy/shellcrash:latest
+  zhemed/shellcrash:latest
 ```
 
 ### 3. 配置需要路由的设备
@@ -106,7 +106,7 @@ cd /tmp/ShellCrash
 ### 2. 下载Compose模版
 
 ```shell
-curl -sSL https://testingcf.jsdelivr.net/gh/juewuy/ShellCrash@dev/docker/compose.yml -O
+curl -sSL https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main/docker/compose.yml -O
 ```
 
 ### 3. 根据本地环境修改Compose模版

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_5_TASK_LOADED" ] && return
 __IS_MODULE_5_TASK_LOADED=1

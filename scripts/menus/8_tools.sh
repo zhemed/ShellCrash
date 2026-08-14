@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_8_TOOLS_LOADED" ] && return
 __IS_MODULE_8_TOOLS_LOADED=1
@@ -201,7 +201,7 @@ tools() {
 mi_autoSSH() {
     echo "-----------------------------------------------"
     echo -e "\033[33m本功能使用软件命令进行固化不保证100%成功！\033[0m"
-    echo -e "\033[33m如有问题请加群反馈：\033[36;4mhttps://t.me/ShellClash\033[0m"
+    echo -e "\033[33m如有问题请加群反馈：\033[36;4mhttps://github.com/zhemed/ShellCrash\033[0m"
     read -p "请输入需要还原的SSH密码(不影响当前密码,回车可跳过) > " mi_mi_autoSSH_pwd
     mi_mi_autoSSH=已配置
     cp -f /etc/dropbear/dropbear_rsa_host_key "$CRASHDIR"/configs/dropbear_rsa_host_key 2>/dev/null
@@ -263,7 +263,7 @@ log_pusher() {
 	                setconfig chat_ID
 	            }
 	        else
-	            #echo -e "\033[33m详细设置指南请参考 https://juewuy.github.io/ \033[0m"
+	            #echo -e "\033[33m详细设置指南请参考 https://github.com/zhemed/ShellCrash/ \033[0m"
 	            . "$CRASHDIR"/menus/bot_tg_bind.sh
 	            chose_bot() {
 	                echo "-----------------------------------------------"
@@ -298,7 +298,7 @@ log_pusher() {
 	                setconfig push_Deer
 	            }
 	        else
-	            #echo -e "\033[33m详细设置指南请参考 https://juewuy.github.io/ \033[0m"
+	            #echo -e "\033[33m详细设置指南请参考 https://github.com/zhemed/ShellCrash/ \033[0m"
 	            echo -e "请先前往 \033[32;4mhttp://www.pushdeer.com/official.html\033[0m 扫码安装快应用或下载APP"
 	            echo -e "打开快应用/APP，并完成登陆"
 	            echo -e "\033[33m切换到「设备」标签页，点击右上角的加号，注册当前设备\033[0m"
@@ -326,7 +326,7 @@ log_pusher() {
 	                setconfig bark_param
 	            }
 	        else
-	            #echo -e "\033[33m详细设置指南请参考 https://juewuy.github.io/ \033[0m"
+	            #echo -e "\033[33m详细设置指南请参考 https://github.com/zhemed/ShellCrash/ \033[0m"
 	            echo -e "\033[33mBark推送仅支持IOS系统，其他平台请使用其他推送方式！\033[0m"
 	            echo -e "\033[32m请安装Bark-IOS客户端，并在客户端中找到专属推送链接\033[0m"
 	            echo "-----------------------------------------------"
@@ -352,7 +352,7 @@ log_pusher() {
 	                setconfig push_Po_key
 	            }
 	        else
-	            #echo -e "\033[33m详细设置指南请参考 https://juewuy.github.io/ \033[0m"
+	            #echo -e "\033[33m详细设置指南请参考 https://github.com/zhemed/ShellCrash/ \033[0m"
 	            echo -e "请先通过 \033[32;4mhttps://pushover.net/\033[0m 注册账号并获取\033[36mUser Key\033[0m"
 	            echo "-----------------------------------------------"
 	            read -p "请输入你的User Key > " key
@@ -388,7 +388,7 @@ log_pusher() {
 	                setconfig push_PP
 	            }
 	        else
-	            #echo -e "\033[33m详细设置指南请参考 https://juewuy.github.io/ \033[0m"
+	            #echo -e "\033[33m详细设置指南请参考 https://github.com/zhemed/ShellCrash/ \033[0m"
 	            echo -e "请先通过 \033[32;4mhttps://www.pushplus.plus/push1.html\033[0m 注册账号并获取\033[36mtoken\033[0m"
 	            echo "-----------------------------------------------"
 	            read -p "请输入你的token > " Token

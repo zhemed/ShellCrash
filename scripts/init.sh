@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 #特殊固件识别及标记
 [ -f "/etc/storage/started_script.sh" ] && { #老毛子固件

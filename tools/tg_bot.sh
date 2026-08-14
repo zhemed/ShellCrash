@@ -44,11 +44,11 @@ send_help(){
 进群讨论：
 https://t.me/+RKujv98Gbx5zGY-P
 项目地址：
-https://github.com/juewuy/ShellCrash
+https://github.com/zhemed/ShellCrash
 相关教程：
-https://juewuy.github.io
+https://github.com/zhemed/ShellCrash
 请喝咖啡：
-https://juewuy.github.io/yOF4Yf06Q/
+https://github.com/zhemed/ShellCrash/yOF4Yf06Q/
 友情机场： 
 https://dler.pro/auth/register?affid=89698
 https://pub.bigmeok.me?code=2PuWY9I7

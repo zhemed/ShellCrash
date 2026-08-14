@@ -7,8 +7,8 @@
 	<a target="_blank" href="https://github.com/MetaCubeX/mihomo/releases">
     <img src="https://img.shields.io/github/release/MetaCubeX/mihomo.svg?style=flat-square&label=Core">
   </a>
-  <a target="_blank" href="https://github.com/juewuy/ShellCrash/releases">
-    <img src="https://img.shields.io/github/release/juewuy/ShellCrash.svg?style=flat-square&label=ShellCrash&colorB=green">
+  <a target="_blank" href="https://github.com/zhemed/ShellCrash/releases">
+    <img src="https://img.shields.io/github/release/zhemed/ShellCrash.svg?style=flat-square&label=ShellCrash&colorB=green">
   </a>
 </p>
 
@@ -38,7 +38,7 @@
 
 ## 常见问题：
 
-[ShellCrash常见问题 | Juewuy's Blog](https://juewuy.github.io/chang-jian-wen-ti/)
+[ShellCrash常见问题 | zhemed's Blog](https://github.com/zhemed/ShellCrash/chang-jian-wen-ti/)
 
 ## 使用方式：
 
@@ -55,48 +55,48 @@
 
 ```shell
 sudo -i #切换到root用户，如果需要密码，请输入密码
-export url='https://testingcf.jsdelivr.net/gh/juewuy/ShellCrash@master' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 或者
 ```shell
 sudo -i #切换到root用户，如果需要密码，请输入密码
-export url='https://gh.jwsc.eu.org/master' && bash -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && bash -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
 ~**路由设备使用curl安装**：<br>
 
 ```shell
 #GitHub源(可能需要代理)
-export url='https://raw.githubusercontent.com/juewuy/ShellCrash/master' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 或者
 ```shell
 #jsDelivrCDN源
-export url='https://testingcf.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 或者
 ```shell
 #作者私人源
-export url='https://gh.jwsc.eu.org/master' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
 ~**路由设备使用wget安装**：<br>
 
 ```Shell
 #GitHub源(可能需要代理)
-export url='https://raw.githubusercontent.com/juewuy/ShellCrash/master' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 或者
 ```shell
 #jsDelivrCDN源
-export url='https://testingcf.jsdelivr.net/gh/juewuy/ShellCrash@master' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ~**老旧设备使用低版本wge安装**：<br>
 
 ```Shell
 #作者私人http内测源
-export url='http://t.jwsc.eu.org' && wget -q -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ##### ~**虚拟机安装：**<br>
@@ -107,16 +107,16 @@ export url='http://t.jwsc.eu.org' && wget -q -O /tmp/install.sh $url/install.sh 
 #安装必要依赖
 apk add --no-cache wget openrc ca-certificates tzdata nftables iproute2 dcron
 #执行安装命令
-export url='https://testingcf.jsdelivr.net/gh/juewuy/ShellCrash@master' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ##### ~Docker安装：<br>
 
-请前往[ShellCrash官方Docker镜像](https://hub.docker.com/r/juewuy/shellcrash) 
+请前往[ShellCrash官方Docker镜像](https://hub.docker.com/r/zhemed/shellcrash) 
 
 ### **本地安装：**<br>
 
-如使用在线安装出现问题，请参考：[本地安装ShellCrash的教程 | Juewuy's Blog](https://juewuy.github.io/bdaz) 使用本地安装！<br>
+如使用在线安装出现问题，请参考：[本地安装ShellCrash的教程 | zhemed's Blog](https://github.com/zhemed/ShellCrash/bdaz) 使用本地安装！<br>
 
 ### 使用脚本：<br>
 
@@ -144,11 +144,11 @@ ubus/iproute-doc	极低		缺少时无法正常获取本机host地址
 更新日志：
 --
 
-### [点击查看](https://github.com/juewuy/ShellCrash/releases)
+### [点击查看](https://github.com/zhemed/ShellCrash/releases)
 
 交流反馈：
 --
-### [TG讨论组](https://t.me/ShellClash) 
+### [TG讨论组](https://github.com/zhemed/ShellCrash) 
 
 机场推荐：
 --

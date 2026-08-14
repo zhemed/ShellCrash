@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
-[ -z "$url" ] && url="https://testingcf.jsdelivr.net/gh/juewuy/ShellCrash@dev"
+[ -z "$url" ] && url="https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main"
 type bash &>/dev/null && shtype=bash || shtype=sh
 [ -n "$(echo -e | grep e)" ] && echo=echo || echo='echo -e'
 echo "***********************************************"
 echo "**                 欢迎使用                  **"
 echo "**                ShellCrash                 **"
-echo "**                             by  Juewuy    **"
+echo "**                             by  zhemed    **"
 echo "***********************************************"
 
 # Check available capacity
@@ -45,7 +45,7 @@ webget() {
     fi
 }
 error_down() {
-    $echo "请参考 \033[32mhttps://github.com/juewuy/ShellCrash/blob/master/README_CN.md"
+    $echo "请参考 \033[32mhttps://github.com/zhemed/ShellCrash/blob/master/README_CN.md"
     $echo "\033[33m使用其他安装源重新安装！\033[0m"
 }
 
@@ -299,7 +299,7 @@ rm -rf /tmp/version
 #输出
 $echo "最新版本：\033[32m$versionsh\033[0m"
 echo "-----------------------------------------------"
-$echo "\033[44m如遇问题请加TG群反馈：\033[42;30m t.me/ShellClash \033[0m"
+$echo "\033[44m如遇问题请加TG群反馈：\033[42;30m github.com/zhemed/ShellCrash \033[0m"
 $echo "\033[37m支持各种基于openwrt的路由器设备"
 $echo "\033[33m支持Debian、Centos等标准Linux系统\033[0m"
 

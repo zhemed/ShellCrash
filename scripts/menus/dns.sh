@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_DNS_LOADED" ] && return
 __IS_MODULE_DNS_LOADED=1

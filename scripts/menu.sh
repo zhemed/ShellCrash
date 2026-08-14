@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 CRASHDIR=$(
     cd $(dirname $0)
@@ -90,7 +90,7 @@ ckstatus() { #脚本启动前检查
     if [ -n "$PID" ]; then
         echo -e "当前内存占用：\033[44m"$VmRSS"\033[0m，已运行：\033[46;30m"$day"\033[44;37m"$time"\033[0m"
     fi
-    echo -e "TG频道：\033[36;4mhttps://t.me/ShellClash\033[0m"
+    echo -e "TG频道：\033[36;4mhttps://github.com/zhemed/ShellCrash\033[0m"
     echo "-----------------------------------------------"
     #检查新手引导
     if [ -z "$userguide" ]; then
@@ -257,7 +257,7 @@ case "$1" in
     ;;
 	-d)
 		shtype=sh && [ -n "$(ls -l /bin/sh | grep -o dash)" ] && shtype=bash
-		echo -e "正在测试运行！如发现错误请截图后前往\033[32;4mt.me/ShellClash\033[0m咨询"
+		echo -e "正在测试运行！如发现错误请截图后前往\033[32;4mgithub.com/zhemed/ShellCrash\033[0m咨询"
 		$shtype "$CRASHDIR"/start.sh debug >/dev/null 2>"$TMPDIR"/debug_sh_bug.log
 		$shtype -x "$CRASHDIR"/start.sh debug >/dev/null 2>"$TMPDIR"/debug_sh.log
 		echo -----------------------------------------
@@ -293,9 +293,9 @@ case "$1" in
 		echo " crash -s stop	停止服务"
 		echo " $CRASHDIR/start.sh init	开机初始化"
 		echo -----------------------------------------
-		echo "在线求助：t.me/ShellClash"
-		echo "官方博客：juewuy.github.io"
-		echo "发布页面：github.com/juewuy/ShellCrash"
+		echo "在线求助：github.com/zhemed/ShellCrash"
+		echo "官方博客：github.com/zhemed/ShellCrash"
+		echo "发布页面：github.com/zhemed/ShellCrash"
 		echo -----------------------------------------
     ;;
 esac

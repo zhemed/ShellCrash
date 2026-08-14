@@ -1,5 +1,5 @@
 #! /bin/bash
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 
 ddns_menu(){

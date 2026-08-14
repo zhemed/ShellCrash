@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 . "$CRASHDIR"/libs/urlencode.sh
 . "$CRASHDIR"/libs/check_target.sh

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
  #修饰singbox配置文件
 parse_singbox_dns() { #dns转换

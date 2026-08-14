@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) Juewuy
+# Copyright (C) zhemed
 
 [ -n "$__IS_MODULE_7_GATEWAY_LOADED" ] && return
 __IS_MODULE_7_GATEWAY_LOADED=1
