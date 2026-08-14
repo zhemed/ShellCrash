@@ -114,7 +114,6 @@ ckstatus() { #脚本启动前检查
 			. "$CRASHDIR"/libs/core_tools.sh && core_check "/tmp/$file"
             if [ "$?" = 0 ]; then
 				echo -e "\033[32m内核加载完成！\033[0m "
-				switch_core
             else
                 echo -e "\033[33m检测到不可用的内核文件！可能是文件受损或CPU架构不匹配！\033[0m"
                 rm -rf /tmp/"$file"
@@ -125,16 +124,12 @@ ckstatus() { #脚本启动前检查
         echo "-----------------------------------------------"
     done
     #检查/tmp配置文件
-    for file in $(ls /tmp | grep -v [/$] | grep -v ' ' | grep -iE 'config.yaml$|config.yml$|config.json$'); do
+    for file in $(ls /tmp | grep -v [/$] | grep -v ' ' | grep -iE 'config.json$'); do
         tmp_file=/tmp/$file
         echo -e "发现内核配置文件： \033[36m/tmp/$file\033[0m "
         read -p "是否加载为$crashcore的配置文件？(1/0) > " res
         [ "$res" = 1 ] && {
-            if [ -n "$(echo /tmp/$file | grep -iE '.json$')" ]; then
-                mv -f /tmp/$file "$CRASHDIR"/jsons/config.json
-            else
-                mv -f /tmp/$file "$CRASHDIR"/yamls/config.yaml
-            fi
+            mv -f /tmp/$file "$CRASHDIR"/jsons/config.json
             echo -e "\033[32m配置文件加载完成！\033[0m "
             sleep 1
         }

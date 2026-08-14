@@ -151,7 +151,7 @@ setscripts(){
 
 #更新内核
 setcpucore(){ #手动设置内核架构
-	cpucore_list="armv5 armv7 arm64 386 amd64 mipsle-softfloat mipsle-hardfloat mips-softfloat"
+	cpucore_list="arm64 amd64"
 	echo "-----------------------------------------------"
 	echo -e "\033[31m仅适合脚本无法正确识别核心或核心无法正常运行时使用！\033[0m"
 	echo -e "当前可供在线下载的处理器架构为："
