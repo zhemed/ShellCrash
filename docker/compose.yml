@@ -2,8 +2,9 @@ version: "3.9"
 
 services:
   shellclash:
-    image: zhemed/shellcrash:latest
+    image: ghcr.io/zhemed/shellcrash:latest
     container_name: shellcrash
+    # macvlan 网络为示例配置，请按实际网段/网关/可用IP修改
     networks:
       macvlan_lan:
         ipv4_address: 192.168.31.222

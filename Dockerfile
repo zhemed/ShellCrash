@@ -6,6 +6,8 @@ FROM alpine:latest AS builder
 ARG TARGETPLATFORM
 ARG TZ=Asia/Shanghai
 ARG S6_OVERLAY_V=v3.2.1.0
+#本项目托管的 sing-box 内核及数据库统一固定到已发布提交地址（更新内核或版本时同步修改此提交号）
+ARG CORE_ASSETS_COMMIT=d7c0fe46d663a8a0b07d0240f5876725dd03dd56
 
 RUN apk add --no-cache curl tzdata
 
@@ -23,7 +25,7 @@ RUN set -eux; \
     export systype=container; \
     export CRASHDIR=/etc/ShellCrash; \
     /bin/sh /tmp/SC_tmp/init.sh
-	
+
 #获取内核及s6文件
 RUN set -eux; \
 	case "$TARGETPLATFORM" in \
@@ -31,16 +33,16 @@ RUN set -eux; \
       linux/arm64)  K=arm64 S=aarch64;; \
       *) echo "unsupported $TARGETPLATFORM" && exit 1 ;; \
     esac; \
-    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/main/bin/singbox/singbox-linux-${K}.tar.gz" -o /tmp/CrashCore.tar.gz; \
+    curl -fsSL "https://raw.githubusercontent.com/zhemed/ShellCrash/${CORE_ASSETS_COMMIT}/bin/singbox/singbox-linux-${K}.tar.gz" -o /tmp/CrashCore.tar.gz; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_V}/s6-overlay-${S}.tar.xz" -o /tmp/s6_arch.tar.xz; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_V}/s6-overlay-noarch.tar.xz" -o /tmp/s6_noarch.tar.xz && ls -l /tmp
 
-#安装面板文件
+#预置规则集数据库
 RUN set -eux; \
-    mkdir -p /etc/ShellCrash/ruleset /etc/ShellCrash/ui; \
-    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/main/bin/geodata/srs.tar.gz" | tar -zxf - -C /etc/ShellCrash/ruleset; \
-    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/dashboard/zashboard.tar.gz" | tar -zxf - -C /etc/ShellCrash/ui
-	  
+    mkdir -p /etc/ShellCrash/ruleset; \
+    curl -fsSL "https://raw.githubusercontent.com/zhemed/ShellCrash/${CORE_ASSETS_COMMIT}/bin/geodata/srs_geosite_cn.srs" -o /etc/ShellCrash/ruleset/cn.srs; \
+    curl -fsSL "https://raw.githubusercontent.com/zhemed/ShellCrash/${CORE_ASSETS_COMMIT}/bin/geodata/srs_geoip_cn.srs" -o /etc/ShellCrash/ruleset/cnip.srs
+
 ############################
 # Stage 2: runtime
 ############################
