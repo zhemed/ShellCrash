@@ -98,6 +98,9 @@ ckstatus() { #脚本启动前检查
         setconfig userguide 1
         . "$CRASHDIR"/menus/8_tools.sh && userguide
 		. "$CRASHDIR"/configs/ShellCrash.cfg
+        #引导结束后重新输出完整状态，避免面板缺少头部
+        ckstatus
+        return
     fi
     #检查执行权限
     [ ! -x "$CRASHDIR"/start.sh ] && chmod +x "$CRASHDIR"/start.sh
