@@ -1,7 +1,7 @@
 . "$CRASHDIR"/libs/web_get.sh
 
 #本项目托管的sing-box核心及版本文件统一固定到已发布提交地址，分支缓存不生效，确保始终拉取到当前版本（更新内核或版本时同步修改此提交号）
-core_assets_commit=d7c0fe46d663a8a0b07d0240f5876725dd03dd56
+core_assets_commit=33a37de8a5729ea2aaf9e037f1b2942335142f28
 
 get_bin() { #专用于项目内部文件的下载
     [ -z "$update_url" ] && update_url=https://raw.githubusercontent.com/zhemed/ShellCrash/main

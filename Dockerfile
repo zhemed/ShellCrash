@@ -7,7 +7,7 @@ ARG TARGETPLATFORM
 ARG TZ=Asia/Shanghai
 ARG S6_OVERLAY_V=v3.2.1.0
 #本项目托管的 sing-box 内核及数据库统一固定到已发布提交地址（更新内核或版本时同步修改此提交号）
-ARG CORE_ASSETS_COMMIT=d7c0fe46d663a8a0b07d0240f5876725dd03dd56
+ARG CORE_ASSETS_COMMIT=33a37de8a5729ea2aaf9e037f1b2942335142f28
 
 RUN apk add --no-cache curl tzdata
 
