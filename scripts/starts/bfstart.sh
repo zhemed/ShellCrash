@@ -37,11 +37,8 @@ makehtml() { #生成面板跳转文件
 </head>
 <body>
     <div style="text-align: center; margin-top: 50px;">
-        <h1>您还未安装本地面板</h1>
-		<h3>请在脚本更新功能中(9-4)安装<br>或者使用在线面板：</h3>
-		<h4>请复制当前地址/ui(不包括)前面的内容，填入url位置即可连接</h3>
-        <a href="http://board.zash.run.place" style="font-size: 24px;">Zashboard面板(推荐)<br></a>
-        <a style="font-size: 21px;"><br>如已安装，请使用Ctrl+F5强制刷新此页面！<br></a>
+        <h1>ShellCrash 服务运行中</h1>
+        <h3>本机未安装管理面板，可通过 Clash API 访问，或自行配置在线面板</h3>
     </div>
 </body>
 </html
