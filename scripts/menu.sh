@@ -90,7 +90,7 @@ ckstatus() { #脚本启动前检查
     if [ -n "$PID" ]; then
         echo -e "当前内存占用：\033[44m"$VmRSS"\033[0m，已运行：\033[46;30m"$day"\033[44;37m"$time"\033[0m"
     fi
-    echo -e "TG频道：\033[36;4mhttps://github.com/zhemed/ShellCrash\033[0m"
+    echo -e "项目主页：\033[36;4mhttps://github.com/zhemed/ShellCrash\033[0m"
     echo "-----------------------------------------------"
     #检查新手引导
     if [ -z "$userguide" ]; then

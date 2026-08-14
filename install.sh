@@ -299,7 +299,7 @@ rm -rf /tmp/version
 #输出
 $echo "最新版本：\033[32m$versionsh\033[0m"
 echo "-----------------------------------------------"
-$echo "\033[44m如遇问题请加TG群反馈：\033[42;30m github.com/zhemed/ShellCrash \033[0m"
+$echo "\033[44m如遇问题请到项目主页反馈：\033[42;30m github.com/zhemed/ShellCrash \033[0m"
 $echo "\033[37m支持各种基于openwrt的路由器设备"
 $echo "\033[33m支持Debian、Centos等标准Linux系统\033[0m"
 
