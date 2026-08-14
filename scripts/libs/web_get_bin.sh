@@ -5,7 +5,7 @@ get_bin() { #专用于项目内部文件的下载
     #raw.githubusercontent.com存在无法刷新的CDN缓存，自动切换至jsDelivr避免拉取到旧文件
     [ -n "$update_url" ] && update_url=$(echo "$update_url" | sed 's#https://raw.githubusercontent.com/zhemed/ShellCrash/main#https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main#')
     #本项目托管的sing-box/mihomo核心及版本文件统一固定到已发布提交的CDN地址，分支缓存不生效，确保始终拉取到当前版本（更新内核或版本时同步修改此提交号）
-    core_assets_commit=fa80d0a8db10cc58fbc7328afccfcdc369308873
+    core_assets_commit=ba0f45d0d5d5a8593f60c6949e861ce6fb64f07e
     case "$2" in
         bin/singbox/*|bin/singboxr/*|bin/meta/*|bin/version)
             bin_url="https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@$core_assets_commit/$2"
