@@ -4,8 +4,7 @@ webget(){
 	if pidof CrashCore >/dev/null; then
 		setproxy #设置临时代理
 		url=$(printf '%s\n' "$2" |
-		sed -e 's#https://.*jsdelivr.net/gh/zhemed/ShellCrash[@|/]#https://raw.githubusercontent.com/zhemed/ShellCrash/#' \
-			# 原作者源兼容逻辑已移除
+		sed 's#https://.*jsdelivr.net/gh/zhemed/ShellCrash[@|/]#https://raw.githubusercontent.com/zhemed/ShellCrash/#')
 	else
 		url=$(printf '%s\n' "$2" |
 		sed 's#https://raw.githubusercontent.com/zhemed/ShellCrash/#https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@#')
