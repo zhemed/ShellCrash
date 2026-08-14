@@ -55,7 +55,7 @@
 
 ```shell
 sudo -i #切换到root用户，如果需要密码，请输入密码
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 或者
 ```shell
@@ -72,7 +72,7 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "
 或者
 ```shell
 #jsDelivrCDN源
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 或者
 ```shell
@@ -89,7 +89,7 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q
 或者
 ```shell
 #jsDelivrCDN源
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ~**老旧设备使用低版本wge安装**：<br>
@@ -107,7 +107,7 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q
 #安装必要依赖
 apk add --no-cache wget openrc ca-certificates tzdata nftables iproute2 dcron
 #执行安装命令
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ##### ~Docker安装：<br>

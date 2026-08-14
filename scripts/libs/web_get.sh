@@ -3,12 +3,8 @@
 webget(){	
 	if pidof CrashCore >/dev/null; then
 		setproxy #设置临时代理
-		url=$(printf '%s\n' "$2" |
-		sed 's#https://.*jsdelivr.net/gh/zhemed/ShellCrash[@|/]#https://raw.githubusercontent.com/zhemed/ShellCrash/#')
-	else
-		url=$(printf '%s\n' "$2" |
-		sed 's#https://raw.githubusercontent.com/zhemed/ShellCrash/#https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@#')
 	fi
+	url="$2"
 	#参数【$1】代表下载目录，【$2】代表在线地址
 	#参数【$3】代表输出显示，【$4】不启用重定向
 	#参数【$5】代表验证证书，【$6】使用自定义UA

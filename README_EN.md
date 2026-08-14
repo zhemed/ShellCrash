@@ -46,7 +46,7 @@
 ~**Standard Linux devices:**<br>
 ```shell
 sudo -i #switch to root, enter password if required
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 or
 ```shell
@@ -62,7 +62,7 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "
 or
 ```shell
 #jsDelivr CDN source
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
 ~**Router devices (wget):**<br>
@@ -73,7 +73,7 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q
 or
 ```shell
 #jsDelivr CDN source
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ~**Legacy devices with old wget:**<br>
@@ -87,7 +87,7 @@ Alpine image is strongly recommended for VM installation<br>
 #install dependencies
 apk add --no-cache wget openrc ca-certificates tzdata nftables iproute2 dcron
 #run installation
-export url='https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
 ##### ~Docker:<br>

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Copyright (C) zhemed
 
-[ -z "$url" ] && url="https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main"
+[ -z "$url" ] && url="https://raw.githubusercontent.com/zhemed/ShellCrash/main"
 type bash &>/dev/null && shtype=bash || shtype=sh
 [ -n "$(echo -e | grep e)" ] && echo=echo || echo='echo -e'
 echo "***********************************************"
