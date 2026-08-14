@@ -69,17 +69,7 @@ settings() { #功能设置
     5)
         echo "-----------------------------------------------"
         if [ "$sniffer" = "OFF" ]; then
-            if [ "$crashcore" = "clash" ]; then
-                rm -rf ${TMPDIR}/CrashCore
-                rm -rf "$CRASHDIR"/CrashCore
-                rm -rf "$CRASHDIR"/CrashCore.tar.gz
-                crashcore=meta
-                setconfig crashcore $crashcore
-                echo "已将ShellCrash内核切换为Meta内核！域名嗅探依赖Meta或者高版本clashpre内核！"
-            fi
             sniffer=ON
-        elif [ "$crashcore" = "clashpre" -a "$dns_mod" = "redir_host" ]; then
-            echo -e "\033[31m使用clashpre内核且开启redir-host模式时无法关闭！\033[0m"
         else
             sniffer=OFF
         fi

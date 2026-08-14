@@ -17,18 +17,9 @@ startover() {
     return 0
 }
 start_core() {
-    if echo "$crashcore" | grep -q 'singbox'; then
-        core_config="$CRASHDIR"/jsons/config.json
-    else
-        core_config="$CRASHDIR"/yamls/config.yaml
-    fi
+    core_config="$CRASHDIR"/jsons/config.json
     echo "-----------------------------------------------"
-    if [ ! -s $core_config -a -s "$CRASHDIR"/configs/providers.cfg ]; then
-        echo -e "\033[33m没有找到${crashcore}配置文件，尝试生成providers配置文件！\033[0m"
-        [ "$crashcore" = singboxr ] && coretype=singbox
-        [ "$crashcore" = meta -o "$crashcore" = clashpre ] && coretype=clash
-        . "$CRASHDIR"/menus/6_core_config.sh && gen_${coretype}_providers
-    elif [ -s $core_config -o -n "$Url" -o -n "$Https" ]; then
+    if [ -s $core_config -o -n "$Url" -o -n "$Https" ]; then
         "$CRASHDIR"/start.sh start
         #设置循环检测以判定服务启动是否成功
 		. "$CRASHDIR"/libs/start_wait.sh

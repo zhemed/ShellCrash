@@ -711,7 +711,7 @@ userguide(){
 					redir_mod="Redir模式"
 				fi
 			}
-			[ -z "$crashcore" ] && crashcore=meta
+			crashcore=singbox
 			setconfig crashcore "$crashcore"
 			setconfig redir_mod "$redir_mod"
 			setconfig dns_mod mix
@@ -746,7 +746,6 @@ userguide(){
 			;;
 		2)
 			setconfig redir_mod "Redir模式"
-			[ -n "$(echo $cputype | grep -E "linux.*mips.*")" ] && setconfig crashcore "clash"
 			setconfig common_ports "OFF"
 			setconfig firewall_area '2'
 		    ;;

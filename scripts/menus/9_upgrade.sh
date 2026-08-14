@@ -185,56 +185,13 @@ setcpucore(){ #手动设置内核架构
 		setconfig cpucore $cpucore
 	fi
 }
-setcoretype(){ #手动指定内核类型
-	echo "$crashcore" | grep -q 'singbox' && core_old=singbox || core_old=clash
-	echo -e "\033[33m请确认该自定义内核的类型：\033[0m"
-	echo -e " 1 Clash基础内核"
-	echo -e " 2 Clash-Premium内核"
-	echo -e " 3 Mihomo(Meta)内核"
-	echo -e " 4 Sing-Box内核"
-	echo -e " 5 Sing-Box-reF1nd内核"
-	read -p "请输入对应数字 > " num
-	case "$num" in
-		2) crashcore=clashpre ;;
-		3) crashcore=meta ;;
-		4) crashcore=singbox ;;
-		5) crashcore=singboxr ;;
-		*) crashcore=clash ;;
-	esac
-	echo "$crashcore" | grep -q 'singbox' && core_new=singbox || core_new=clash
-}
-switch_core(){ #clash与singbox内核切换
-	#singbox和clash内核切换时提示是否保留文件
-	[ "$core_new" != "$core_old" ] && {
-		[ "$dns_mod" = "redir_host" ] && [ "$core_old" = "clash" ] && setconfig dns_mod mix #singbox自动切换dns
-		[ "$dns_mod" = "mix" ] && [ "$crashcore" = 'clash' -o "$crashcore" = 'clashpre' ] && setconfig dns_mod redir_host #singbox自动切换dns
-		echo -e "\033[33m已从$core_old内核切换至$core_new内核\033[0m"
-		echo -e "\033[33m二者Geo数据库及yaml/json配置文件不通用\033[0m"
-		read -p "是否保留相关数据库文件？(1/0) > " res
-		[ "$res" = '0' ] && {
-			[ "$core_old" = "clash" ] && {
-				geodate='Country.mmdb GeoSite.dat ruleset/*.mrs ruleset/*.yaml ruleset/*.yml'
-				geodate_v='Country_v cn_mini_v geosite_v mrs_geosite_cn_v'
-			}
-			[ "$core_old" = "singbox" ] && {
-				geodate='geoip.db geosite.db ruleset/*.srs ruleset/*.json'
-				geodate_v='geoip_cn_v geosite_cn_v srs_geoip_cn_v srs_geosite_cn_v'
-			}
-			for text in ${geodate} ;do
-				rm -rf "$CRASHDIR"/${text}
-			done
-			for text in ${geodate_v} ;do
-				setconfig "$text"
-			done
-		}
-	}
+setcoretype(){ #自定义内核固定为sing-box类型
+	crashcore=singbox
 }
 getcore(){ #下载内核文件
 	. "$CRASHDIR"/libs/core_tools.sh #调用下载工具
-	[ -z "$crashcore" ] && crashcore=meta
+	crashcore=singbox
 	[ -z "$cpucore" ] && check_cpucore
-	[ "$crashcore" = unknow ] && setcoretype
-	echo "$crashcore" | grep -q 'singbox' && core_new=singbox || core_new=clash
 	#获取在线内核文件
 	echo "-----------------------------------------------"
 	echo "正在在线获取$crashcore核心文件……"
@@ -243,7 +200,6 @@ getcore(){ #下载内核文件
 	0)
 		echo -e "\033[32m$crashcore核心下载成功！\033[0m"
 		sleep 1
-		switch_core
 	;;
 	1)
 		echo -e "\033[31m核心文件下载失败！\033[0m"
@@ -270,30 +226,18 @@ setcustcore(){ #自定义内核
 	}
 	echo "-----------------------------------------------"
 	echo -e "\033[33m请选择需要使用的核心！\033[0m"
-	echo -e "1 \033[36mMihomo\033[32m内置内核 \033[0m(v1.19.17 本项目托管)"
-	echo -e "2 \033[36mSingBox\033[32m内置内核 \033[0m(1.13.18 本项目托管)"
-	echo -e "3 \033[36mSingBoxR\033[32m内置内核 \033[0m(1.13.0-alpha.27 本项目托管)"
-	echo -e "4 \033[33m自定义内核链接 \033[0m"
+	echo -e "1 \033[36mSingBox\033[32m内置内核 \033[0m(1.13.18 本项目托管)"
+	echo -e "2 \033[33m自定义内核链接 \033[0m"
 	echo "-----------------------------------------------"
 	echo -e " 0 返回上级菜单"
 	read -p "请输入对应数字 > " num
 	case "$num" in
 	1)
-		crashcore=meta
-		custcorelink=''
-		getcore
-	;;
-	2)
 		crashcore=singbox
 		custcorelink=''
 		getcore
 	;;
-	3)
-		crashcore=singboxr
-		custcorelink=''
-		getcore
-	;;
-	4)
+	2)
 		read -p "请输入自定义内核的链接地址(必须是以.tar.gz、.upx或.gz结尾的压缩文件) > " link
 		[ -n "$link" ] && custcorelink="$link"
 		setcoretype
@@ -303,41 +247,13 @@ setcustcore(){ #自定义内核
 	;;
 	esac
 }
-setziptype(){
-	echo "-----------------------------------------------"
-	echo -e "请选择内核内核分支及压缩方式：\033[0m"
-	echo "-----------------------------------------------"
-	echo -e " 1 \033[36m最简编译release版本,upx压缩\033[0m-不支持Gvisor,Tailscale,Wireguard,NaiveProxy"
-	echo -e " 2 \033[32m标准编译release版本,tar.gz压缩\033[0m-完整支持脚本全部内置功能"
-	echo -e " 3 \033[33m完整编译alpha版本,gz压缩\033[0m-占用可能略高，稳定性自测"
-	echo "-----------------------------------------------"
-	echo " 0 返回上级菜单"
-	read -p "请输入对应数字 > " num
-	case "$num" in
-	0) ;;
-	1) 
-		zip_type='upx'
-	;;
-	2) 
-		zip_type='tar.gz'
-	;;
-	3) 
-		zip_type='gz'
-	;;
-	*) 
-		errornum
-	;;
-	esac
-	setconfig zip_type "$zip_type"
-}
 
 # 内核选择菜单
 setcore() {
     while true; do
         # 获取核心及版本信息
-        [ -z "$crashcore" ] && crashcore="unknow"
-        [ -z "$zip_type" ] && zip_type="tar.gz"
-        echo "$crashcore" | grep -q 'singbox' && core_old=singbox || core_old=clash
+        crashcore=singbox
+        zip_type=tar.gz
         [ -n "$custcorelink" ] && custcore="$(echo $custcorelink | sed 's#.*github.com##; s#/releases/download/#@#')"
         ###
         echo "-----------------------------------------------"
@@ -345,26 +261,14 @@ setcore() {
         echo -e "当前内核：\033[42;30m $crashcore \033[47;30m$core_v\033[0m"
         echo -e "当前系统处理器架构：\033[32m $cpucore \033[0m"
         echo -e "\033[33m请选择需要使用的核心版本！\033[0m"
-        echo -e "\033[36m如需本地上传，请将.upx .gz .tar.gz文件上传至 /tmp 目录后重新运行crash命令\033[0m"
+        echo -e "\033[36m如需本地上传，请将.tar.gz文件上传至 /tmp 目录后重新运行crash命令\033[0m"
         echo "-----------------------------------------------"
-        echo -e "1 \033[43;30m Mihomo  \033[0m：	\033[32m(原meta内核)支持全面\033[0m"
-        echo -e " >>\033[32m$meta_v   		\033[33m占用略高\033[0m"
-        echo -e "  说明文档：	\033[36;4mhttps://wiki.metacubex.one\033[0m"
-        echo -e "2 \033[43;30m SingBox \033[0m：	\033[32m官方内核\033[0m"
+        echo -e "1 \033[43;30m SingBox \033[0m：	\033[32m官方内核\033[0m"
         echo -e " >>\033[32m$singbox_v  	\033[33mSagerNet 官方 sing-box\033[0m"
         echo -e "  说明文档：	\033[36;4mhttps://sing-box.sagernet.org\033[0m"
-        echo -e "3 \033[43;30m SingBoxR \033[0m：	\033[32m支持全面\033[0m"
-        echo -e " >>\033[32m$singboxr_v      \033[33m使用reF1nd增强分支\033[0m"
-        echo -e "  说明文档：	\033[36;4mhttps://sing-boxr.dustinwin.us.kg\033[0m"
-        [ "$zip_type" = 'upx' ] && {
-            echo -e "4 \033[43;30m Clash \033[0m：	\033[32m占用低\033[0m"
-            echo -e " >>\033[32m$clash_v  		\033[33m不安全,已停止维护\033[0m"
-            echo -e "  说明文档：	\033[36;4mhttps://lancellc.gitbook.io\033[0m"
-        }
         echo "-----------------------------------------------"
-        echo -e "5 切换版本分支及压缩方式:	\033[32m$zip_type\033[0m"
-        echo -e "6 \033[36m使用自定义内核\033[0m	$custcore"
-        echo -e "7 \033[32m更新当前内核\033[0m"
+        echo -e "2 \033[36m使用自定义内核\033[0m	$custcore"
+        echo -e "3 \033[32m更新当前内核\033[0m"
         echo "-----------------------------------------------"
         echo "9 手动指定处理器架构"
         echo "-----------------------------------------------"
@@ -375,40 +279,15 @@ setcore() {
             break
             ;;
         1)
-            [ -d "/jffs" ] && {
-                echo -e "\033[31mMeta内核使用的GeoSite.dat数据库在华硕设备存在被系统误删的问题，可能无法使用!\033[0m"
-                sleep 3
-            }
-            crashcore=meta
-            custcorelink=''
-            getcore
-            break
-            ;;
-        2)
             crashcore=singbox
             custcorelink=''
             getcore
             break
             ;;
-        3)
-            crashcore=singboxr
-            custcorelink=''
-            getcore
-            break
-            ;;
-        4)
-            crashcore=clash
-            custcorelink=''
-            getcore
-            break
-            ;;
-        5)
-            setziptype
-            ;;
-        6)
+        2)
             setcustcore
             ;;
-        7)
+        3)
             getcore
             break
             ;;
@@ -499,9 +378,7 @@ checkcustgeo() {
             [1-99])
                 if [ "$num" -le "$(wc -l <"$TMPDIR"/geo.list)" ]; then
                     geotype=$(sed -n "$num"p "$TMPDIR"/geo.list)
-                    [ -n "$(echo $geotype | grep -oiE 'GeoSite.*dat')" ] && geoname=GeoSite.dat
-                    [ -n "$(echo $geotype | grep -oiE 'Country.*mmdb')" ] && geoname=Country.mmdb
-                    [ -n "$(echo $geotype | grep -oiE '.*(.srs|.mrs)')" ] && geoname=$geotype
+                    [ -n "$(echo $geotype | grep -oiE '.*\.srs')" ] && geoname=$geotype
                     custgeolink=https://github.com/${project}/releases/download/${release_tag}/${geotype}
                     getcustgeo
                 else
@@ -534,11 +411,7 @@ setcustgeo() {
 		echo -e "\033[33m如遇到网络错误请先启动ShellCrash服务！\033[0m"
 		echo -e "\033[0m请选择需要更新的数据库项目来源：\033[0m"
 		echo "-----------------------------------------------"
-		echo -e " 1 \033[36;4mhttps://github.com/MetaCubeX/meta-rules-dat\033[0m (仅限Clash/Mihomo)"
-		echo -e " 2 \033[36;4mhttps://github.com/DustinWin/ruleset_geodata\033[0m (仅限Clash/Mihomo)"
-		echo -e " 3 \033[36;4mhttps://github.com/DustinWin/ruleset_geodata\033[0m (仅限SingBox-srs)"
-		echo -e " 4 \033[36;4mhttps://github.com/DustinWin/ruleset_geodata\033[0m (仅限Mihomo-mrs)"
-		echo -e " 5 \033[36;4mhttps://github.com/Loyalsoldier/geoip\033[0m (仅限Clash-GeoIP)"
+		echo -e " 1 \033[36;4mhttps://github.com/DustinWin/ruleset_geodata\033[0m (仅限SingBox-srs)"
 		echo "-----------------------------------------------"
 		echo -e " 9 \033[33m自定义数据库链接 \033[0m"
 		echo -e " 0 返回上级菜单"
@@ -548,28 +421,8 @@ setcustgeo() {
 			break
 		;;
 		1)
-			project=MetaCubeX/meta-rules-dat
-			api_tag=latest
-			checkcustgeo
-		;;
-		2)
-			project=DustinWin/ruleset_geodata
-			api_tag=mihomo-geodata
-			checkcustgeo
-		;;
-		3)
 			project=DustinWin/ruleset_geodata
 			api_tag=sing-box-ruleset
-			checkcustgeo
-		;;
-		4)
-			project=DustinWin/ruleset_geodata
-			api_tag=mihomo-ruleset
-			checkcustgeo
-		;;
-		5)
-			project=Loyalsoldier/geoip
-			api_tag=latest
 			checkcustgeo
 		;;
 		9)
@@ -588,23 +441,17 @@ setcustgeo() {
 setgeo() {
 	while true; do
 		. $CFG_PATH > /dev/null
-		[ -n "$cn_mini_v" ] && geo_type_des=精简版 || geo_type_des=全球版
 		echo "-----------------------------------------------"
 		echo -e "\033[36m请选择需要更新的Geo数据库文件：\033[0m"
-		echo -e "\033[36mMihomo内核和SingBox内核的数据库文件不通用\033[0m"
 		echo -e "在线数据库最新版本(每日同步上游)：\033[32m$GeoIP_v\033[0m"
 		echo "-----------------------------------------------"
 		echo -e " 1 CN-IP绕过文件(约0.1mb)	\033[33m$china_ip_list_v\033[0m"
 		echo -e " 2 CN-IPV6绕过文件(约30kb)	\033[33m$china_ipv6_list_v\033[0m"
 		echo "-----------------------------------------------"
-		echo -e " 3 Mihomo精简版GeoIP_cn数据库(约0.1mb)	\033[33m$cn_mini_v\033[0m"
-		echo -e " 4 Mihomo完整版GeoSite数据库(约5mb)	\033[33m$geosite_v\033[0m"
+		echo -e " 3 Singbox-srs数据库常用包(约0.8mb,非必要勿用)"
 		echo "-----------------------------------------------"
-		echo -e " 5 Mihomo-mrs数据库常用包(约1mb,非必要勿用)"
-		echo -e " 6 Singbox-srs数据库常用包(约0.8mb,非必要勿用)"
-		echo "-----------------------------------------------"
-		echo -e " 8 \033[32m自定义数据库文件\033[0m"
-		echo -e " 9 \033[31m清理数据库文件\033[0m"
+		echo -e " 4 \033[32m自定义数据库文件\033[0m"
+		echo -e " 5 \033[31m清理数据库文件\033[0m"
 		echo " 0 返回上级菜单"
 		echo "-----------------------------------------------"
 		read -p "请输入对应数字 > " num
@@ -623,39 +470,24 @@ setgeo() {
 			getgeo
 		;;
 		3)
-			geotype=cn_mini.mmdb
-			geoname=Country.mmdb
-			getgeo
-		;;
-		4)
-			geotype=geosite.dat
-			geoname=GeoSite.dat
-			getgeo
-		;;
-		5)
-			geotype=mrs.tar.gz
-			geoname=mrs.tar.gz
-			getgeo
-		;;
-		6)
 			geotype=srs.tar.gz
 			geoname=srs.tar.gz
 			getgeo
 		;;
-		8)
+		4)
 			setcustgeo
 		;;
-		9)
+		5)
 			echo "-----------------------------------------------"
 			echo -e "\033[33m这将清理$CRASHDIR目录及/ruleset目录下所有数据库文件！\033[0m"
 			echo -e "\033[36m清理后启动服务即可自动下载所需文件~\033[0m"
 			echo "-----------------------------------------------"
 			read -p "确认清理？[1/0] > " res
 			[ "$res" = '1' ] && {
-				for file in cn_ip.txt cn_ipv6.txt Country.mmdb GeoSite.dat geoip.db geosite.db;do
+				for file in cn_ip.txt cn_ipv6.txt geoip.db geosite.db;do
 					rm -rf $CRASHDIR/$file
 				done
-				for var in Country_v cn_mini_v china_ip_list_v china_ipv6_list_v geosite_v geoip_cn_v geosite_cn_v mrs_geosite_cn_v srs_geoip_cn_v srs_geosite_cn_v mrs_v srs_v;do
+				for var in china_ip_list_v china_ipv6_list_v geoip_cn_v geosite_cn_v srs_geoip_cn_v srs_geosite_cn_v srs_v;do
 					setconfig $var
 				done
 				rm -rf $CRASHDIR/ruleset/*
