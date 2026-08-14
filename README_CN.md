@@ -4,8 +4,8 @@
 
 
   <p align="center">
-	<a target="_blank" href="https://github.com/MetaCubeX/mihomo/releases">
-    <img src="https://img.shields.io/github/release/MetaCubeX/mihomo.svg?style=flat-square&label=Core">
+	<a target="_blank" href="https://github.com/SagerNet/sing-box/releases">
+    <img src="https://img.shields.io/github/release/SagerNet/sing-box.svg?style=flat-square&label=Core">
   </a>
   <a target="_blank" href="https://github.com/zhemed/ShellCrash/releases">
     <img src="https://img.shields.io/github/release/zhemed/ShellCrash.svg?style=flat-square&label=ShellCrash&colorB=green">
@@ -17,9 +17,9 @@
 功能简介：
 --
 
-~通过管理脚本在Shell环境下便捷使用Mihomo/Singbox内核<br>
+~通过管理脚本在Shell环境下便捷使用官方 sing-box 内核<br>
 ~支持在Shell环境下管理<br>
-~支持在线导入订阅及配置链接<br>
+~支持在线导入配置直链及本地配置文件<br>
 ~支持配置定时任务，支持配置文件定时更新<br>
 ~支持在线安装及使用本地网页面板管理内置规则<br>
 ~支持路由模式、本机模式等多种模式切换<br>
@@ -34,7 +34,7 @@
 ~兼容各类使用Linux内核定制开发的各类型设备<br>
 
 ——————————<br>
-~更多设备支持，请提issue或前往TG群反馈（需提供设备名称及运行uname -a返回的设备核心信息）<br>
+~更多设备支持，请提issue或前往项目主页反馈（需提供设备名称及运行uname -a返回的设备核心信息）<br>
 
 ## 常见问题：
 
