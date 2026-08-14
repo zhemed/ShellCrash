@@ -1,9 +1,7 @@
 name: bin_update
 
 on:
-  schedule:
-    - cron: "0 18 * * *"   # UTC 18 = 北京时间次日凌晨 2 点
-  workflow_dispatch:
+  workflow_dispatch:   # 面板版本已固定在本仓库，需要更新时手动触发
 
 jobs:
   update:
