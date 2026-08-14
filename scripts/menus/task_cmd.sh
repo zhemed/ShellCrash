@@ -56,15 +56,15 @@ update_core(){ #自动更新内核
 }
 update_scripts(){ #自动更新脚本
 	#检查版本
-	check_update version
-	if [ -z "$versionsh" -o "$versionsh" = "versionsh_l" ];then
+	check_update bin/version
+	if [ -z "$versionsh" -o "$versionsh" = "$(cat "$CRASHDIR"/version 2>/dev/null)" ];then
 		task_logger "任务【自动更新脚本】中止-未检测到版本更新"
 		return 0
 	else
 		get_bin "$TMPDIR"/ShellCrash.tar.gz "ShellCrash.tar.gz"
 		if [ "$?" != "0" ];then
 			rm -rf "$TMPDIR"/ShellCrash.tar.gz
-			task_logger "任务【自动更新内核】出错-下载失败！"
+			task_logger "任务【自动更新脚本】出错-下载失败！"
 			return 1
 		else
 			#停止服务
@@ -73,7 +73,7 @@ update_scripts(){ #自动更新脚本
 			tar -zxf "$TMPDIR"/ShellCrash.tar.gz ${tar_para} -C "$CRASHDIR"/
 			if [ $? -ne 0 ];then
 				rm -rf "$TMPDIR"/ShellCrash.tar.gz
-				task_logger "任务【自动更新内核】出错-解压失败！"
+				task_logger "任务【自动更新脚本】出错-解压失败！"
 				"$CRASHDIR"/start.sh start
 				return 1
 			else

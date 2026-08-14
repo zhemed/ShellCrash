@@ -45,7 +45,7 @@ webget() {
     fi
 }
 error_down() {
-    $echo "请参考 \033[32mhttps://github.com/zhemed/ShellCrash/blob/master/README_CN.md"
+    $echo "请参考 \033[32mhttps://github.com/zhemed/ShellCrash\033[0m"
     $echo "\033[33m使用其他安装源重新安装！\033[0m"
 }
 

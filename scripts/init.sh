@@ -162,7 +162,7 @@ fi
 #容器环境额外设置
 [ "$systype" = 'container' ] && {
 	setconfig userguide '1'
-	setconfig crashcore 'meta'
+	setconfig crashcore 'singbox'
 	setconfig dns_mod 'mix'
 	setconfig firewall_area '1'
 	setconfig firewall_mod 'nftables'

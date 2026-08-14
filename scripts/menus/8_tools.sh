@@ -675,7 +675,7 @@ debug(){
 		main_menu
 	;;
 	9)
-		. "$CRASHDIR"/libs/core_webget.sh && core_find && "$TMPDIR"/CrashCore merge "$TMPDIR"/debug.json -C "$TMPDIR"/jsons && echo -e "\033[32m合并成功！\033[0m"
+		. "$CRASHDIR"/libs/core_tools.sh && core_find && "$TMPDIR"/CrashCore merge "$TMPDIR"/debug.json -C "$TMPDIR"/jsons && echo -e "\033[32m合并成功！\033[0m"
 		[ "$TMPDIR" = "$BINDIR" ] && rm -rf "$TMPDIR"/CrashCore
 		main_menu
 	;;

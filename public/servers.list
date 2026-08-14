@@ -1,7 +1,5 @@
-# ID&类型 说明 地址 其他说明 (类型：100-三版全通源;200-单一源;300-基础sub;400-meta_sub;500-规则地址)
+# ID&类型 说明 地址 其他说明 (类型：200-单一源)
 
-102 Github直连源(请注意网络环境) https://raw.githubusercontent.com/zhemed/ShellCrash
-
-202 http私人内测源(危险!非必要请勿使用)  https://raw.githubusercontent.com/zhemed/ShellCrash/main 开发版
+201 GitHub直连源 https://raw.githubusercontent.com/zhemed/ShellCrash/main 稳定版
 
 
