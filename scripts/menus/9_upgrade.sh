@@ -410,14 +410,9 @@ setcore() {
         echo -e "1 \033[43;30m Mihomo  \033[0m：	\033[32m(原meta内核)支持全面\033[0m"
         echo -e " >>\033[32m$meta_v   		\033[33m占用略高\033[0m"
         echo -e "  说明文档：	\033[36;4mhttps://wiki.metacubex.one\033[0m"
-        echo -e "2 \033[43;30m SingBoxR \033[0m：	\033[32m支持全面\033[0m"
-        echo -e " >>\033[32m$singboxr_v  	\033[33m使用reF1nd增强分支\033[0m"
-        echo -e "  说明文档：	\033[36;4mhttps://sing-boxr.dustinwin.us.kg\033[0m"
-        [ "$zip_type" = 'upx' ] && {
-            echo -e "3 \033[43;30m SingBox \033[0m：	\033[32m占用较低\033[0m"
-            echo -e " >>\033[32m$singbox_v  		\033[33m不支持providers\033[0m"
-            echo -e "  说明文档：	\033[36;4mhttps://sing-box.sagernet.org\033[0m"
-        }
+        echo -e "2 \033[43;30m SingBox \033[0m：	\033[32m官方内核\033[0m"
+        echo -e " >>\033[32m1.10.7  	\033[33mSagerNet 官方 sing-box\033[0m"
+        echo -e "  说明文档：	\033[36;4mhttps://sing-box.sagernet.org\033[0m"
         [ "$zip_type" = 'upx' ] && {
             echo -e "4 \033[43;30m Clash \033[0m：	\033[32m占用低\033[0m"
             echo -e " >>\033[32m$clash_v  		\033[33m不安全,已停止维护\033[0m"
@@ -447,7 +442,7 @@ setcore() {
             break
             ;;
         2)
-            crashcore=singboxr
+            crashcore=singbox
             custcorelink=''
             getcore
             break
