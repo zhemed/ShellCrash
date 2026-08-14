@@ -192,11 +192,13 @@ setcoretype(){ #手动指定内核类型
 	echo -e " 2 Clash-Premium内核"
 	echo -e " 3 Mihomo(Meta)内核"
 	echo -e " 4 Sing-Box内核"
+	echo -e " 5 Sing-Box-reF1nd内核"
 	read -p "请输入对应数字 > " num
 	case "$num" in
 		2) crashcore=clashpre ;;
 		3) crashcore=meta ;;
 		4) crashcore=singbox ;;
+		5) crashcore=singboxr ;;
 		*) crashcore=clash ;;
 	esac
 	echo "$crashcore" | grep -q 'singbox' && core_new=singbox || core_new=clash
@@ -269,7 +271,7 @@ setcustcore(){ #自定义内核
 	echo "-----------------------------------------------"
 	echo -e "\033[33m请选择需要使用的核心！\033[0m"
 	echo -e "1 \033[36mMihomo\033[32m内置内核 \033[0m(v1.19.17 本项目托管)"
-	echo -e "2 \033[36mSingBox\033[32m内置内核 \033[0m(1.13.18 本项目托管)"
+	echo -e "2 \033[36mSingBoxR\033[32m内置内核 \033[0m(1.13.0-alpha.27 本项目托管)"
 	echo -e "3 \033[33m自定义内核链接 \033[0m"
 	echo "-----------------------------------------------"
 	echo -e " 0 返回上级菜单"
@@ -281,7 +283,7 @@ setcustcore(){ #自定义内核
 		getcore
 	;;
 	2)
-		crashcore=singbox
+		crashcore=singboxr
 		custcorelink=''
 		getcore
 	;;
@@ -342,9 +344,9 @@ setcore() {
         echo -e "1 \033[43;30m Mihomo  \033[0m：	\033[32m(原meta内核)支持全面\033[0m"
         echo -e " >>\033[32m$meta_v   		\033[33m占用略高\033[0m"
         echo -e "  说明文档：	\033[36;4mhttps://wiki.metacubex.one\033[0m"
-        echo -e "2 \033[43;30m SingBox \033[0m：	\033[32m官方内核\033[0m"
-        echo -e " >>\033[32m1.13.18  	\033[33mSagerNet 官方 sing-box\033[0m"
-        echo -e "  说明文档：	\033[36;4mhttps://sing-box.sagernet.org\033[0m"
+        echo -e "2 \033[43;30m SingBoxR \033[0m：	\033[32m支持全面\033[0m"
+        echo -e " >>\033[32m$singboxr_v      \033[33m使用reF1nd增强分支\033[0m"
+        echo -e "  说明文档：	\033[36;4mhttps://sing-boxr.dustinwin.us.kg\033[0m"
         [ "$zip_type" = 'upx' ] && {
             echo -e "4 \033[43;30m Clash \033[0m：	\033[32m占用低\033[0m"
             echo -e " >>\033[32m$clash_v  		\033[33m不安全,已停止维护\033[0m"
@@ -374,7 +376,7 @@ setcore() {
             break
             ;;
         2)
-            crashcore=singbox
+            crashcore=singboxr
             custcorelink=''
             getcore
             break
