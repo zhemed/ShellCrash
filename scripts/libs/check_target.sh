@@ -1,8 +1,3 @@
-if echo "$crashcore" | grep -q 'singbox'; then
-	target=singbox
-	format=json
-else
-	target=clash
-	format=yaml
-fi
-core_config="$CRASHDIR/${format}s/config.$format"
+target=singbox
+format=json
+core_config="$CRASHDIR"/jsons/config.json

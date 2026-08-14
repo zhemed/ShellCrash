@@ -77,7 +77,7 @@ EOF
 #检测网络连接
 [ "$network_check" != "OFF" ] && [ ! -f "$TMPDIR"/crash_start_time ] && ckcmd ping && . "$CRASHDIR"/starts/check_network.sh && check_network
 [ ! -d "$BINDIR"/ui ] && mkdir -p "$BINDIR"/ui
-[ -z "$crashcore" ] && crashcore=meta
+[ -z "$crashcore" ] && crashcore=singbox
 #执行条件任务
 [ -s "$CRASHDIR"/task/bfstart ] && . "$CRASHDIR"/task/bfstart
 #检查内核配置文件
@@ -97,21 +97,12 @@ fi
 [ ! -s "$BINDIR"/ui/index.html ] && makehtml #如没有面板则创建跳转界面
 catpac                                       #生成pac文件
 #内核及内核配置文件检查
-if echo "$crashcore" | grep -q 'singbox'; then
-	. "$CRASHDIR"/starts/singbox_check.sh && singbox_check
-	[ -d "$TMPDIR"/jsons ] && rm -rf "$TMPDIR"/jsons/* || mkdir -p "$TMPDIR"/jsons #准备目录
-	if [ "$disoverride" != "1" ];then
-		. "$CRASHDIR"/starts/singbox_modify.sh && modify_json
-	else
-		ln -sf "$core_config" "$TMPDIR"/jsons/config.json
-	fi
+. "$CRASHDIR"/starts/singbox_check.sh && singbox_check
+[ -d "$TMPDIR"/jsons ] && rm -rf "$TMPDIR"/jsons/* || mkdir -p "$TMPDIR"/jsons #准备目录
+if [ "$disoverride" != "1" ];then
+	. "$CRASHDIR"/starts/singbox_modify.sh && modify_json
 else
-	. "$CRASHDIR"/starts/clash_check.sh && clash_check
-	if [ "$disoverride" != "1" ];then
-		. "$CRASHDIR"/starts/clash_modify.sh && modify_yaml
-	else
-		ln -sf "$core_config" "$TMPDIR"/config.yaml
-	fi
+	ln -sf "$core_config" "$TMPDIR"/jsons/config.json
 fi
 #检查下载cnip绕过相关文件
 [ "$cn_ip_route" = "ON" ] && [ "$dns_mod" != "fake-ip" ] && {

@@ -42,15 +42,11 @@ parse_singbox_dns() { #dns转换
 	echo '"type": "'"$type"'", "server": "'"$server"'", "server_port": '"$port"','
 }
 modify_json() {
-    #提取配置文件以获得outbounds.json,providers.json及route.json
+    #提取配置文件以获得outbounds.json及route.json
     "$TMPDIR"/CrashCore format -c $core_config >"$TMPDIR"/format.json
     echo '{' >"$TMPDIR"/jsons/outbounds.json
     echo '{' >"$TMPDIR"/jsons/route.json
     cat "$TMPDIR"/format.json | sed -n '/"outbounds":/,/^  "[a-z]/p' | sed '$d' >>"$TMPDIR"/jsons/outbounds.json
-    [ "$crashcore" = "singboxr" ] && {
-        echo '{' >"$TMPDIR"/jsons/providers.json
-        cat "$TMPDIR"/format.json | sed -n '/^  "providers":/,/^  "[a-z]/p' | sed '$d' >>"$TMPDIR"/jsons/providers.json
-    }
     cat "$TMPDIR"/format.json | sed -n '/"route":/,/^\(  "[a-z]\|}\)/p' | sed '$d' >>"$TMPDIR"/jsons/route.json
     #生成endpoints.json
 	[ "$ts_service" = ON ] || [ "$wg_service" = ON ] && [ "$zip_type" != upx ] && {
@@ -133,7 +129,6 @@ EOF
     [ "$dns_protect" = "OFF" ] && sed -i 's/"server": "dns_proxy"/"server": "dns_direct"/g' "$TMPDIR"/jsons/route.json
     #生成add_rule_set.json
     [ "$dns_mod" = "mix" ] || [ "$dns_mod" = "route" ] && ! grep -Eq '"tag" *:[[:space:]]*"cn"' "$CRASHDIR"/jsons/*.json && {
-		[ "$crashcore" = "singboxr" ] && srs_path='"path": "./ruleset/cn.srs",'
         cat >"$TMPDIR"/jsons/add_rule_set.json <<EOF
 {
   "route": {
@@ -142,7 +137,6 @@ EOF
         "tag": "cn",
         "type": "remote",
         "format": "binary",
-        $srs_path
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
         "download_detour": "DIRECT"
       }
@@ -348,12 +342,12 @@ EOF
     sed -i 's/"auto_detect_interface": true/"auto_detect_interface": false/g' "$TMPDIR"/jsons/route.json
     #跳过本地tls证书验证
     if [ "$skip_cert" != "OFF" ]; then
-        sed -i 's/"insecure": false/"insecure": true/' "$TMPDIR"/jsons/outbounds.json "$TMPDIR"/jsons/providers.json 2>/dev/null
+        sed -i 's/"insecure": false/"insecure": true/' "$TMPDIR"/jsons/outbounds.json 2>/dev/null
     else
-        sed -i 's/"insecure": true/"insecure": false/' "$TMPDIR"/jsons/outbounds.json "$TMPDIR"/jsons/providers.json 2>/dev/null
+        sed -i 's/"insecure": true/"insecure": false/' "$TMPDIR"/jsons/outbounds.json 2>/dev/null
     fi
-    #判断可用并修饰outbounds&providers&route.json结尾
-    for file in outbounds providers route; do
+    #判断可用并修饰outbounds&route.json结尾
+    for file in outbounds route; do
         if [ -n "$(grep ${file} "$TMPDIR"/jsons/${file}.json 2>/dev/null)" ]; then
             sed -i 's/^  },$/  }/; s/^  ],$/  ]/' "$TMPDIR"/jsons/${file}.json
             echo '}' >>"$TMPDIR"/jsons/${file}.json
@@ -371,7 +365,7 @@ EOF
         }
     done
     #以下为增量添加的自定义文件
-    for char in others endpoints inbounds outbounds providers route services; do
+    for char in others endpoints inbounds outbounds route services; do
         [ -s "$CRASHDIR"/jsons/${char}.json ] && {
             ln -sf "$CRASHDIR"/jsons/${char}.json "$TMPDIR"/jsons/cust_${char}.json
         }

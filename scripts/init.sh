@@ -87,11 +87,7 @@ setconfig versionsh_l $version
     setconfig TMPDIR "$TMPDIR" "$CRASHDIR"/configs/command.env
     setconfig BINDIR "$BINDIR" "$CRASHDIR"/configs/command.env
 }
-if [ -n "$(grep 'crashcore=singbox' "$CFG_PATH")" ]; then
-    COMMAND='"$TMPDIR/CrashCore run -D $BINDIR -C $TMPDIR/jsons"'
-else
-    COMMAND='"$TMPDIR/CrashCore -d $BINDIR -f $TMPDIR/config.yaml"'
-fi
+COMMAND='"$TMPDIR/CrashCore run -D $BINDIR -C $TMPDIR/jsons"'
 setconfig COMMAND "$COMMAND" "$CRASHDIR"/configs/command.env
 #设置防火墙执行模式
 grep -q 'firewall_mod' "$CRASHDIR/configs/ShellClash.cfg" 2>/dev/null || {
@@ -201,9 +197,6 @@ done
 #配置文件改名
 mv -f "$CRASHDIR"/configs/ShellClash.cfg "$CFG_PATH" 2>/dev/null
 #数据库改名
-mv -f "$CRASHDIR"/geosite.dat "$CRASHDIR"/GeoSite.dat 2>/dev/null
-mv -f "$CRASHDIR"/ruleset/geosite-cn.srs "$CRASHDIR"/ruleset/cn.srs 2>/dev/null
-mv -f "$CRASHDIR"/ruleset/geosite-cn.mrs "$CRASHDIR"/ruleset/cn.mrs 2>/dev/null
 #数据库移动
 mv -f "$CRASHDIR"/*.srs "$CRASHDIR"/ruleset/ 2>/dev/null
 mv -f "$CRASHDIR"/*.mrs "$CRASHDIR"/ruleset/ 2>/dev/null

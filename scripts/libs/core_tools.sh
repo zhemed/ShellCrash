@@ -9,7 +9,7 @@ core_unzip() { #$1:需要解压的文件 $2:目标文件名
 		mkdir -p "$TMPDIR"/core_tmp
 		tar -zxf "$1" ${tar_para} -C "$TMPDIR"/core_tmp/
 		for file in $(find "$TMPDIR"/core_tmp $find_para 2>/dev/null); do
-			[ -f "$file" ] && [ -n "$(echo $file | sed 's#.*/##' | grep -iE '(CrashCore|sing|meta|mihomo|clash|pre)')" ] && mv -f "$file" "$TMPDIR"/"$2"
+			[ -f "$file" ] && [ -n "$(echo $file | sed 's#.*/##' | grep -iE '(CrashCore|sing)')" ] && mv -f "$file" "$TMPDIR"/"$2"
 		done
 		rm -rf "$TMPDIR"/core_tmp
 	elif echo "$1" |grep -q '.gz$' ;then
@@ -32,14 +32,10 @@ core_find(){
 core_check(){
 	[ -n "$(pidof CrashCore)" ] && "$CRASHDIR"/start.sh stop #停止内核服务防止内存不足
 	core_unzip "$1" core_new
-	sbcheck=$(echo "$crashcore" | grep 'singbox')
 	v=''
-	if [ -n "$sbcheck" ] && "$TMPDIR"/core_new -h 2>&1 | grep -q 'sing-box'; then
+	if "$TMPDIR"/core_new -h 2>&1 | grep -q 'sing-box'; then
 		v=$("$TMPDIR"/core_new version 2>/dev/null | grep version | awk '{print $3}')
 		COMMAND='"$TMPDIR/CrashCore run -D $BINDIR -C $TMPDIR/jsons"'
-	elif [ -z "$sbcheck" ] && "$TMPDIR"/core_new -h 2>&1 | grep -q '\-t';then
-		v=$("$TMPDIR"/core_new -v 2>/dev/null | head -n 1 | sed 's/ linux.*//;s/.* //')
-		COMMAND='"$TMPDIR/CrashCore -d $BINDIR -f $TMPDIR/config.yaml"'
 	fi
 	if [ -z "$v" ]; then
 		rm -rf "$1" "$TMPDIR"/core_new
