@@ -87,10 +87,6 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q
 ~**Docker：**<br>
 请前往[ShellCrash官方Docker镜像](https://hub.docker.com/r/zhemed/shellcrash)
 
-### **本地安装：**<br>
-
-如使用在线安装出现问题，请参考：[本地安装ShellCrash的教程 | zhemed's Blog](https://github.com/zhemed/ShellCrash/bdaz) 使用本地安装！<br>
-
 ### 使用脚本：<br>
 
 安装完成管理脚本后，执行如下命令使用~
@@ -113,19 +109,3 @@ ubus/iproute-doc	极低		缺少时无法正常获取本机host地址
 ```
 
 
-
-更新日志：
---
-
-### [点击查看](https://github.com/zhemed/ShellCrash/releases)
-
-交流反馈：
---
-### [项目主页](https://github.com/zhemed/ShellCrash) 
-
-机场推荐：
---
-
-#### [Dler-墙洞，多年稳定运行，功能齐全](https://dler.pro/auth/register?affid=89698)<br>
-
-#### [大米-群友力荐，流媒体解锁，月付推荐](https://1s.bigmeok.me/user#/register?code=2PuWY9I7)<br>

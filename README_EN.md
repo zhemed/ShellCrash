@@ -80,9 +80,6 @@ export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q
 ~**Docker:**<br>
 Visit the [ShellCrash official Docker image](https://hub.docker.com/r/zhemed/shellcrash)
 
-### Local installation:<br>
-If online installation fails, please refer to: [Local installation tutorial | zhemed's Blog](https://github.com/zhemed/ShellCrash/bdaz)<br>
-
 ### Using the script:<br>
 After installation, run:<br>
 ```Shell
@@ -100,11 +97,3 @@ crontab         low         missing -> scheduled tasks unavailable
 net-tools       very low    missing -> port conflict detection unavailable
 ubus/iproute-doc very low    missing -> host IP detection unavailable
 ```
-
-Update log:
---
-### [View releases](https://github.com/zhemed/ShellCrash/releases)
-
-Feedback:
---
-### [Project page](https://github.com/zhemed/ShellCrash)
