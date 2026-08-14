@@ -77,9 +77,6 @@ apk add --no-cache wget openrc ca-certificates tzdata nftables iproute2 dcron
 export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-~**Docker:**<br>
-Visit the [ShellCrash official Docker image](https://hub.docker.com/r/zhemed/shellcrash)
-
 ### Using the script:<br>
 After installation, run:<br>
 ```Shell
