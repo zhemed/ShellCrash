@@ -41,56 +41,43 @@
 -- Run the installation command below for your device and follow the prompts<br>
 
 ### Online installation:<br>
-(**If connection fails or SSL errors occur, try switching to a different installation source!**)<br>
 
-~**Standard Linux devices:**<br>
-```shell
-sudo -i #switch to root, enter password if required
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
-```
-or
+~**Standard Linux devices (curl):**<br>
 ```shell
 sudo -i #switch to root, enter password if required
 export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && bash -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
-~**Router devices (curl):**<br>
+~**Standard Linux devices (wget):**<br>
 ```shell
-#GitHub source (proxy may be required)
+sudo -i #switch to root, enter password if required
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && bash /tmp/install.sh && . /etc/profile &> /dev/null
+```
+
+~**Router/embedded devices (curl):**<br>
+```shell
 export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
-or
+
+~**Router/embedded devices (wget):**<br>
 ```shell
-#jsDelivr CDN source
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-~**Router devices (wget):**<br>
+~**Legacy devices (old wget without certificate support):**<br>
 ```shell
-#GitHub source (proxy may be required)
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
-```
-or
-```shell
-#jsDelivr CDN source
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-~**Legacy devices with old wget:**<br>
-```shell
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
-```
-
-##### ~**Virtual machine:**<br>
-Alpine image is strongly recommended for VM installation<br>
+~**Virtual machine (Alpine image recommended):**<br>
 ```shell
 #install dependencies
 apk add --no-cache wget openrc ca-certificates tzdata nftables iproute2 dcron
 #run installation
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-##### ~Docker:<br>
+~**Docker:**<br>
 Visit the [ShellCrash official Docker image](https://hub.docker.com/r/zhemed/shellcrash)
 
 ### Local installation:<br>

@@ -49,70 +49,43 @@
 
 ### 在线安装：<br>
 
-（**如无法连接或出现SSL连接错误，请尝试更换各种不同的安装源！**）<br>
-
-~**标准Linux设备安装：**<br>
-
-```shell
-sudo -i #切换到root用户，如果需要密码，请输入密码
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && bash /tmp/install.sh && . /etc/profile &> /dev/null
-```
-或者
+~**标准 Linux 设备（curl）：**<br>
 ```shell
 sudo -i #切换到root用户，如果需要密码，请输入密码
 export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && bash -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
-~**路由设备使用curl安装**：<br>
+~**标准 Linux 设备（wget）：**<br>
+```shell
+sudo -i #切换到root用户，如果需要密码，请输入密码
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && bash /tmp/install.sh && . /etc/profile &> /dev/null
+```
 
+~**路由/嵌入式设备（curl）：**<br>
 ```shell
-#GitHub源(可能需要代理)
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
-```
-或者
-```shell
-#jsDelivrCDN源
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
-```
-或者
-```shell
-#作者私人源
 export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
-~**路由设备使用wget安装**：<br>
-
-```Shell
-#GitHub源(可能需要代理)
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
-```
-或者
+~**路由/嵌入式设备（wget）：**<br>
 ```shell
-#jsDelivrCDN源
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-~**老旧设备使用低版本wge安装**：<br>
-
-```Shell
-#作者私人http内测源
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+~**老旧设备（低版本 wget，不支持证书参数）：**<br>
+```shell
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-##### ~**虚拟机安装：**<br>
-
-虚拟机环境强烈建议使用Alpine镜像安装<br>
-
+~**虚拟机（推荐 Alpine 镜像）：**<br>
 ```shell
 #安装必要依赖
 apk add --no-cache wget openrc ca-certificates tzdata nftables iproute2 dcron
 #执行安装命令
-export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh  && sh /tmp/install.sh && . /etc/profile &> /dev/null
+export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && wget -q --no-check-certificate -O /tmp/install.sh $url/install.sh && sh /tmp/install.sh && . /etc/profile &> /dev/null
 ```
 
-##### ~Docker安装：<br>
-
-请前往[ShellCrash官方Docker镜像](https://hub.docker.com/r/zhemed/shellcrash) 
+~**Docker：**<br>
+请前往[ShellCrash官方Docker镜像](https://hub.docker.com/r/zhemed/shellcrash)
 
 ### **本地安装：**<br>
 
@@ -148,7 +121,7 @@ ubus/iproute-doc	极低		缺少时无法正常获取本机host地址
 
 交流反馈：
 --
-### [TG讨论组](https://github.com/zhemed/ShellCrash) 
+### [项目主页](https://github.com/zhemed/ShellCrash) 
 
 机场推荐：
 --
