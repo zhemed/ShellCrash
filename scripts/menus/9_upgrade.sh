@@ -272,7 +272,8 @@ setcustcore(){ #自定义内核
 	echo -e "\033[33m请选择需要使用的核心！\033[0m"
 	echo -e "1 \033[36mMihomo\033[32m内置内核 \033[0m(v1.19.17 本项目托管)"
 	echo -e "2 \033[36mSingBox\033[32m内置内核 \033[0m(1.13.18 本项目托管)"
-	echo -e "3 \033[33m自定义内核链接 \033[0m"
+	echo -e "3 \033[36mSingBoxR\033[32m内置内核 \033[0m(1.13.0-alpha.27 本项目托管)"
+	echo -e "4 \033[33m自定义内核链接 \033[0m"
 	echo "-----------------------------------------------"
 	echo -e " 0 返回上级菜单"
 	read -p "请输入对应数字 > " num
@@ -288,6 +289,11 @@ setcustcore(){ #自定义内核
 		getcore
 	;;
 	3)
+		crashcore=singboxr
+		custcorelink=''
+		getcore
+	;;
+	4)
 		read -p "请输入自定义内核的链接地址(必须是以.tar.gz、.upx或.gz结尾的压缩文件) > " link
 		[ -n "$link" ] && custcorelink="$link"
 		setcoretype
@@ -347,6 +353,9 @@ setcore() {
         echo -e "2 \033[43;30m SingBox \033[0m：	\033[32m官方内核\033[0m"
         echo -e " >>\033[32m$singbox_v  	\033[33mSagerNet 官方 sing-box\033[0m"
         echo -e "  说明文档：	\033[36;4mhttps://sing-box.sagernet.org\033[0m"
+        echo -e "3 \033[43;30m SingBoxR \033[0m：	\033[32m支持全面\033[0m"
+        echo -e " >>\033[32m$singboxr_v      \033[33m使用reF1nd增强分支\033[0m"
+        echo -e "  说明文档：	\033[36;4mhttps://sing-boxr.dustinwin.us.kg\033[0m"
         [ "$zip_type" = 'upx' ] && {
             echo -e "4 \033[43;30m Clash \033[0m：	\033[32m占用低\033[0m"
             echo -e " >>\033[32m$clash_v  		\033[33m不安全,已停止维护\033[0m"
@@ -382,7 +391,7 @@ setcore() {
             break
             ;;
         3)
-            crashcore=singbox
+            crashcore=singboxr
             custcorelink=''
             getcore
             break
