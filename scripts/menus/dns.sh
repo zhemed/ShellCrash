@@ -29,7 +29,7 @@ set_dns_mod() { #DNS模式设置
     case "$num" in
     0) ;;
     1)
-        if echo "$crashcore" | grep -q 'singbox' || [ "$crashcore" = meta ]; then
+        if echo "$crashcore" | grep -q 'singbox'; then
             dns_mod=mix
             setconfig dns_mod $dns_mod
             echo "-----------------------------------------------"
@@ -41,7 +41,7 @@ set_dns_mod() { #DNS模式设置
 		set_dns_mod
     ;;
     2)
-        if echo "$crashcore" | grep -q 'singbox' || [ "$crashcore" = meta ]; then
+        if echo "$crashcore" | grep -q 'singbox'; then
             dns_mod=route
             setconfig dns_mod $dns_mod
             echo "-----------------------------------------------"
@@ -203,7 +203,7 @@ set_dns_adv() { #DNS详细设置
         echo "-----------------------------------------------"
         openssldir="$(openssl version -d 2>&1 | awk -F '"' '{print $2}')"
         if [ -s "$openssldir/certs/ca-certificates.crt" ] || [ -s "/etc/ssl/certs/ca-certificates.crt" ] ||
-            echo "$crashcore" | grep -qE 'meta|singbox'; then
+            echo "$crashcore" | grep -q 'singbox'; then
             dns_nameserver='https://dns.alidns.com/dns-query, https://doh.pub/dns-query'
             dns_fallback='https://cloudflare-dns.com/dns-query, https://dns.google/dns-query, https://doh.opendns.com/dns-query'
             dns_resolver='https://223.5.5.5/dns-query, 2400:3200::1'

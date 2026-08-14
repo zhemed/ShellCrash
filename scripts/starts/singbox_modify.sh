@@ -137,7 +137,7 @@ EOF
         "tag": "cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cn.srs",
+        "url": "https://raw.githubusercontent.com/zhemed/ShellCrash/$core_assets_commit/bin/geodata/srs_geosite_cn.srs",
         "download_detour": "DIRECT"
       }
     ]

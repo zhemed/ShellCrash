@@ -19,21 +19,18 @@
 ~Manage everything in the Shell environment<br>
 ~Support online import of full configuration links and local config files<br>
 ~Support scheduled tasks and scheduled config updates<br>
-~Support online installation of a local web dashboard to manage built-in rules<br>
+~Support Clash API, you can connect an online dashboard yourself<br>
 ~Support multiple modes: router transparent proxy, local proxy, etc.<br>
 ~Support online update<br>
 
 ## Equipment support:
 --
-~OpenWrt-based routers and devices with OpenWrt-customized firmware<br>
-~Devices running standard Linux systems (Debian/CentOS/Armbian, etc.)<br>
-~Compatible with Padavan firmware (conservative mode), Pandora firmware, ASUS/Merlin firmware<br>
-~Compatible with various devices using customized Linux kernels<br>
+~OpenWrt-based routers and devices with OpenWrt-customized firmware (x86_64 / arm64)<br>
+~Devices running standard Linux systems (Debian/CentOS/Armbian, etc.) (x86_64 / arm64)<br>
+~Compatible with Padavan firmware (conservative mode), Pandora firmware, ASUS/Merlin firmware (use local core upload)<br>
+~Other CPU architectures can be used by uploading the core file locally (switch core - custom core)<br>
 ——————————<br>
 ~For more device support, please submit an issue or visit the project page (provide the device model and the output of `uname -a`)<br>
-
-## FAQ:
-[ShellCrash FAQ | zhemed's Blog](https://github.com/zhemed/ShellCrash/chang-jian-wen-ti/)
 
 ## Usage:
 -- Make sure SSH is enabled and root access is obtained (Linux devices with a GUI can use the built-in terminal)<br>

@@ -115,8 +115,6 @@ debug)
     if [ -n "$2" ]; then
         if echo "$crashcore" | grep -q 'singbox'; then
             sed -i "s/\"level\": \"info\"/\"level\": \"$2\"/" "$TMPDIR"/jsons/log.json 2>/dev/null
-        else
-            sed -i "s/log-level: info/log-level: $2/" "$TMPDIR"/config.yaml
         fi
         [ "$3" = flash ] && dir="$CRASHDIR" || dir="$TMPDIR"
         $COMMAND >"$dir"/debug.log 2>&1 &

@@ -32,17 +32,8 @@ send_msg(){
 }
 send_help(){
     TEXT=$(cat <<EOF
-进群讨论：
-https://t.me/+6AElkMDzwPxmMmM1
 项目地址：
 https://github.com/zhemed/ShellCrash
-相关教程：
-https://github.com/zhemed/ShellCrash
-请喝咖啡：
-https://github.com/zhemed/ShellCrash/yOF4Yf06Q/
-友情机场： 
-https://dler.pro/auth/register?affid=89698
-https://pub.bigmeok.me?code=2PuWY9I7
 EOF
 )
 	send_msg "$TEXT"

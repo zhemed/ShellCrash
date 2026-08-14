@@ -21,24 +21,20 @@
 ~支持在Shell环境下管理<br>
 ~支持在线导入配置直链及本地配置文件<br>
 ~支持配置定时任务，支持配置文件定时更新<br>
-~支持在线安装及使用本地网页面板管理内置规则<br>
+~支持 Clash API，可自行接入在线管理面板<br>
 ~支持路由模式、本机模式等多种模式切换<br>
 ~支持在线更新<br>
 
 设备支持：
 --
 
-~支持各种基于OpenWrt或使用OpenWrt二次定制开发的路由器设备<br>
-~支持各种运行标准Linux系统（如Debian/CenOS/Armbian等）的设备<br>
-~兼容Padavan固件（保守模式）、潘多拉固件以及华硕/梅林固件<br>
-~兼容各类使用Linux内核定制开发的各类型设备<br>
+~支持基于OpenWrt或使用OpenWrt二次定制开发的路由器设备（x86_64 / arm64 架构）<br>
+~支持各种运行标准Linux系统（如Debian/CentOS/Armbian等）的设备（x86_64 / arm64 架构）<br>
+~兼容Padavan固件（保守模式）、潘多拉固件以及华硕/梅林固件（可通过本地上传内核使用）<br>
+~其余处理器架构可通过本地上传内核文件使用（切换内核-自定义内核）<br>
 
 ——————————<br>
 ~更多设备支持，请提issue或前往项目主页反馈（需提供设备名称及运行uname -a返回的设备核心信息）<br>
-
-## 常见问题：
-
-[ShellCrash常见问题 | zhemed's Blog](https://github.com/zhemed/ShellCrash/chang-jian-wen-ti/)
 
 ## 使用方式：
 

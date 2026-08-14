@@ -22,7 +22,7 @@ I have tested using the test mod, and the issue still exists.
 "
           required: true
         - label: "
-我已经仔细看过 [常见问题](https://github.com/zhemed/ShellCrash/chang-jian-wen-ti/) 并无法自行解决问题
+我已经仔细阅读过 [项目主页](https://github.com/zhemed/ShellCrash) 说明并无法自行解决问题
 "
           required: true
   - type: textarea

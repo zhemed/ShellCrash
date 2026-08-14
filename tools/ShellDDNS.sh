@@ -7,7 +7,6 @@ tmp_dir=/tmp/ddns_$USER
 [ ! -f $ddns_dir ] && echo -e "本脚本依赖OpenWrt内置的DDNS服务,当前设备无法运行,已退出！" && exit 1
 echo -----------------------------------------------
 echo -e "\033[30;46m欢迎使用ShellDDNS！\033[0m"
-echo -e "TG群：\033[36;4mhttps://t.me/ShellCrash\033[0m"
 
 add_ddns() {
 	cat >>$ddns_dir <<EOF

@@ -3,10 +3,10 @@
 
 check_config() { #检查singbox配置文件
     #检测节点或providers
-    if ! grep -qE '"(socks|http|shadowsocks(r)?|vmess|trojan|wireguard|hysteria(2)?|vless|shadowtls|tuic|ssh|tor|providers|anytls|soduku)"' "$core_config_new"; then
+    if ! grep -qE '"(socks|http|shadowsocks(r)?|vmess|trojan|wireguard|hysteria(2)?|vless|shadowtls|tuic|ssh|tor|providers|anytls)"' "$core_config_new"; then
         echo "-----------------------------------------------"
         logger "获取到了配置文件【$core_config_new】，但似乎并不包含正确的节点信息！" 31
-        echo "请尝试使用6-2或者6-3的方式生成配置文件！"
+        echo "请确认链接为 sing-box 完整配置文件（JSON），或使用本地导入！"
         exit 1
     fi
     #删除不兼容的旧版内容

@@ -265,27 +265,8 @@ log_pusher() {
 	        else
 	            #echo -e "\033[33m详细设置指南请参考 https://github.com/zhemed/ShellCrash/ \033[0m"
 	            . "$CRASHDIR"/menus/bot_tg_bind.sh
-	            chose_bot() {
-	                echo "-----------------------------------------------"
-	                echo -e " 1 使用公共机器人	——不依赖内核服务"
-	                echo -e " 2 使用私人机器人	——需要额外申请"
-	                echo "-----------------------------------------------"
-	                read -p "请输入对应数字 > " num
-	                case $num in
-	                1)
-	                    public_bot
-	                    set_bot && tg_push_token || chose_bot
-	            	;;
-	                2)
-	                    private_bot
-	                    set_bot && tg_push_token || chose_bot
-	            	;;
-	                *)
-	                    errornum
-	            	;;
-	                esac
-	            }
-	            chose_bot
+	            private_bot
+	            set_bot && tg_push_token || errornum
 	        fi
 	        sleep 1
 			;;
@@ -584,7 +565,7 @@ testcommand(){
 		exit;
 	    ;;
 	5)
-        echo "$crashcore" | grep -q 'singbox' && config_path="$CRASHDIR"/jsons/config.json || config_path="$CRASHDIR"/yamls/config.yaml
+        config_path="$CRASHDIR"/jsons/config.json
 		echo "-----------------------------------------------"
         sed -n '1,40p' "$config_path"
 		echo "-----------------------------------------------"
@@ -609,7 +590,7 @@ testcommand(){
 	esac
 }
 debug(){
-	echo "$crashcore" | grep -q 'singbox' && config_tmp="$TMPDIR"/jsons || config_tmp="$TMPDIR"/config.yaml
+	config_tmp="$TMPDIR"/jsons
 	echo "-----------------------------------------------"
 	echo -e "\033[36m注意：Debug运行均会停止原本的内核服务\033[0m"
 	echo -e "后台运行日志地址：\033[32m$TMPDIR/debug.log\033[0m"
@@ -633,13 +614,9 @@ debug(){
 	1)
 		"$CRASHDIR"/start.sh stop
 		"$CRASHDIR"/start.sh bfstart
-		if echo "$crashcore" | grep -q 'singbox' ;then
-			"$TMPDIR"/CrashCore run -D "$BINDIR" -C "$TMPDIR"/jsons &
-			{ sleep 4 ; kill $! >/dev/null 2>&1 & }
-			wait
-		else
-			"$TMPDIR"/CrashCore -t -d "$BINDIR" -f "$TMPDIR"/config.yaml
-		fi
+		"$TMPDIR"/CrashCore run -D "$BINDIR" -C "$TMPDIR"/jsons &
+		{ sleep 4 ; kill $! >/dev/null 2>&1 & }
+		wait
 		rm -rf "$TMPDIR"/CrashCore
 		echo "-----------------------------------------------"
 		exit

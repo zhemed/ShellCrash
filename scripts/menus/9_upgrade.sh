@@ -10,7 +10,6 @@ __IS_MODULE_9_UPGRADE_LOADED=1
 
 error_down(){
 	echo -e "\033[33m请尝试切换至其他安装源后重新下载！\033[0m"
-	echo -e "或者参考 \033[32;4mhttps://github.com/zhemed/ShellCrash/bdaz\033[0m 进行本地安装！"
 	sleep 1
 }
 
@@ -67,7 +66,6 @@ upgrade() {
         6)
             echo "-----------------------------------------------"
             echo -e "PAC配置链接为：\033[30;47m http://$host:$db_port/ui/pac \033[0m"
-            echo -e "PAC的使用教程请参考：\033[4;32mhttps://github.com/zhemed/ShellCrash/ehRUeewcv\033[0m"
             sleep 2
             ;;
         7)
@@ -81,14 +79,7 @@ upgrade() {
             ;;
         99)
             echo "-----------------------------------------------"
-            echo -e "感谢：\033[32mClash项目 \033[0m作者\033[36m Dreamacro\033[0m"
             echo -e "感谢：\033[32msing-box项目 \033[0m作者\033[36m SagerNet\033[0m 项目地址：\033[32mhttps://github.com/SagerNet/sing-box\033[0m"
-            echo -e "感谢：\033[32mMetaCubeX项目 \033[0m作者\033[36m MetaCubeX\033[0m 项目地址：\033[32mhttps://github.com/MetaCubeX\033[0m"
-            echo -e "感谢：\033[32mYACD面板项目 \033[0m作者\033[36m haishanh\033[0m 项目地址：\033[32mhttps://github.com/haishanh/yacd\033[0m"
-            echo -e "感谢：\033[32mzashboard项目 \033[0m作者\033[36m Zephyruso\033[0m 项目地址：\033[32mhttps://github.com/Zephyruso/zashboard\033[0m"
-            echo -e "感谢：\033[32mSubconverter \033[0m作者\033[36m tindy2013\033[0m 项目地址：\033[32mhttps://github.com/tindy2013/subconverter\033[0m"
-            echo -e "感谢：\033[32msing-box分支项目 \033[0m作者\033[36m PuerNya\033[0m 项目地址：\033[32mhttps://github.com/PuerNya/sing-box\033[0m"
-            echo -e "感谢：\033[32msing-box分支项目 \033[0m作者\033[36m reF1nd\033[0m 项目地址：\033[32mhttps://github.com/reF1nd/sing-box\033[0m"
             echo -e "感谢：\033[32mDustinWin相关项目 \033[0m作者\033[36m DustinWin\033[0m 作者地址：\033[32mhttps://github.com/DustinWin\033[0m"
             echo "-----------------------------------------------"
             echo -e "特别感谢：\033[36m所有帮助及赞助过此项目的同仁们！\033[0m"
@@ -107,13 +98,10 @@ upgrade() {
 #检查更新
 checkupdate(){
 	echo -ne "\033[32m正在检查更新！\033[0m\r"
-	get_bin "$TMPDIR"/version_new version echooff
-	[ "$?" = "0" ] && {
-		version_new=$(cat "$TMPDIR"/version_new)
-		get_bin "$TMPDIR"/version_new bin/version echooff
-	}
+	get_bin "$TMPDIR"/version_new bin/version echooff
 	if [ "$?" = "0" ];then
 		. "$TMPDIR"/version_new 2>/dev/null
+		version_new=$versionsh
 	else
 		echo -e "\033[31m检查更新失败！请尝试切换其他安装源！\033[0m"
 		setserver
@@ -172,7 +160,6 @@ setcpucore(){ #手动设置内核架构
 	echo -e "\033[31m仅适合脚本无法正确识别核心或核心无法正常运行时使用！\033[0m"
 	echo -e "当前可供在线下载的处理器架构为："
 	echo $cpucore_list | awk -F " " '{for(i=1;i<=NF;i++) {print i" "$i }}'
-	echo -e "不知道如何获取核心版本？请参考：\033[36;4mhttps://github.com/zhemed/ShellCrash/bdaz\033[0m"
 	echo "-----------------------------------------------"
 	read -p "请输入对应数字 > " num
 	[ -n "$num" ] && setcpucore=$(echo $cpucore_list | awk '{print $"'"$num"'"}' )

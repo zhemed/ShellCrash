@@ -4,7 +4,6 @@
 [ -n "$__IS_MODULE_6_CORECONFIG_LOADED" ] && return
 __IS_MODULE_6_CORECONFIG_LOADED=1
 
-YAMLSDIR="$CRASHDIR"/yamls
 JSONSDIR="$CRASHDIR"/jsons
 
 #导入订阅、配置文件相关
@@ -16,7 +15,6 @@ set_singbox_adv(){ #自定义singbox配置文件
 		echo -e "\033[36mendpoints inbounds outbounds providers route services\033[0m"
 		echo -e "将相应json文件放入\033[33m$JSONSDIR\033[0m目录后即可在启动时自动加载"
 		echo "-----------------------------------------------"
-		echo -e "使用前请务必参考配置教程:\033[32;4m https://github.com/zhemed/ShellCrash/nWTjEpkSK \033[0m"
 }
 override(){ #配置文件覆写
 	[ -z "$rule_link" ] && rule_link=1
@@ -89,8 +87,7 @@ set_core_config_link(){ #直接导入配置
 	echo -e "\033[32m仅限导入完整的配置文件链接！！！\033[0m"
 	echo "-----------------------------------------------"
 	echo -e "注意：\033[31m此功能不兼容“跳过证书验证”功能，部分老旧\n设备可能出现x509报错导致节点不通\033[0m"
-	echo -e "你也可以搭配在线订阅转换网站或者自建SubStore使用"
-	echo "$crashcore" | grep -q 'singbox' &&echo -e "singbox内核建议使用自己的订阅转换服务"
+	echo -e "仅支持完整配置直链，不提供订阅转换服务"
 	echo "-----------------------------------------------"
 	echo -e "\033[33m0 返回上级菜单\033[0m"
 	echo "-----------------------------------------------"
@@ -133,11 +130,7 @@ set_core_config(){
 	echo "-----------------------------------------------"
 	echo -e "\033[30;47m ShellCrash配置文件管理\033[0m"
 	echo "-----------------------------------------------"
-	if [ -f "$CRASHDIR"/v2b_api.sh ];then
-		echo -e " 1 登录\033[33m获取订阅(推荐！)\033[0m"
-	else
-		echo -e " 1 在线\033[33m获取配置文件\033[0m(完整配置直链)"
-	fi
+	echo -e " 1 在线\033[33m获取配置文件\033[0m(完整配置直链)"
 	echo -e " 2 本地\033[33m上传完整配置文件\033[0m"
 	echo -e " 3 设置\033[36m自动更新\033[0m"
 	echo -e " 4 \033[32m自定义\033[0m配置文件"
@@ -151,12 +144,7 @@ set_core_config(){
 	0)
 	;;
 	1)
-		if [ -f "$CRASHDIR"/v2b_api.sh ];then
-			. "$CRASHDIR"/v2b_api.sh
-			set_core_config
-		else
-			set_core_config_link
-		fi
+		set_core_config_link
 		set_core_config
 	;;
 	2)
