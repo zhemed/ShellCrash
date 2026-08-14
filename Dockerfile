@@ -29,18 +29,16 @@ RUN set -eux; \
 	case "$TARGETPLATFORM" in \
       linux/amd64)  K=amd64 S=x86_64;; \
       linux/arm64)  K=arm64 S=aarch64;; \
-      linux/arm/v7) K=armv7 S=arm;; \
-      linux/386)    K=386 S=i486;; \
       *) echo "unsupported $TARGETPLATFORM" && exit 1 ;; \
     esac; \
-    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/meta/clash-linux-${K}.tar.gz" -o /tmp/CrashCore.tar.gz; \
+    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/main/bin/singbox/singbox-linux-${K}.tar.gz" -o /tmp/CrashCore.tar.gz; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_V}/s6-overlay-${S}.tar.xz" -o /tmp/s6_arch.tar.xz; \
     curl -fsSL "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_V}/s6-overlay-noarch.tar.xz" -o /tmp/s6_noarch.tar.xz && ls -l /tmp
 
 #安装面板文件
 RUN set -eux; \
     mkdir -p /etc/ShellCrash/ruleset /etc/ShellCrash/ui; \
-    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/geodata/mrs.tar.gz" | tar -zxf - -C /etc/ShellCrash/ruleset; \
+    curl -fsSL "https://github.com/zhemed/ShellCrash/raw/main/bin/geodata/srs.tar.gz" | tar -zxf - -C /etc/ShellCrash/ruleset; \
     curl -fsSL "https://github.com/zhemed/ShellCrash/raw/update/bin/dashboard/zashboard.tar.gz" | tar -zxf - -C /etc/ShellCrash/ui
 	  
 ############################
