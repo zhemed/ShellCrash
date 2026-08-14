@@ -12,15 +12,7 @@ update_servers() { #更新servers.list
     [ "$?" = 0 ] && mv -f "$TMPDIR"/servers.list "$CRASHDIR"/configs/servers.list
 }
 gen_ua(){  #自动生成ua
-    [ -z "$user_agent" -o "$user_agent" = "auto" ] && {
-        if echo "$crashcore" | grep -q 'singbox'; then
-            user_agent="sing-box/singbox/$core_v"
-        elif [ "$crashcore" = meta ]; then
-            user_agent="clash.meta/mihomo/$core_v"
-        else
-            user_agent="clash"
-        fi
-    }
+    [ -z "$user_agent" -o "$user_agent" = "auto" ] && user_agent="sing-box/singbox/$core_v"
     [ "$user_agent" = "none" ] && unset user_agent
 }
 get_core_config() { #下载内核配置文件

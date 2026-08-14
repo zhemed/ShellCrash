@@ -56,7 +56,7 @@ send_menu(){
 	else
 		run='🟡未运行'
 	fi
-	corename=$(echo $crashcore | sed 's/singboxr/SingBoxR/' | sed 's/singbox/SingBox/' | sed 's/clash/Clash/' | sed 's/meta/Mihomo/')
+	corename=SingBox
     TEXT=$(cat <<EOF
 *欢迎使用ShellCrash！*_${versionsh_l}_
 $corename服务$run

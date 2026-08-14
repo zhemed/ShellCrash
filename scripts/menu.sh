@@ -80,7 +80,7 @@ ckstatus() { #脚本启动前检查
         #检测系统端口占用
         checkport
     fi
-    corename=$(echo $crashcore | sed 's/singboxr/SingBoxR/' | sed 's/singbox/SingBox/' | sed 's/clash/Clash/' | sed 's/meta/Mihomo/')
+    corename=SingBox
     [ "$firewall_area" = 5 ] && corename='转发'
     [ -f "$TMPDIR"/debug.log -o -f "$CRASHDIR"/debug.log -a -n "$PID" ] && auto="\033[33m并处于debug状态！\033[0m"
     #输出状态
@@ -105,7 +105,7 @@ ckstatus() { #脚本启动前检查
     #检查执行权限
     [ ! -x "$CRASHDIR"/start.sh ] && chmod +x "$CRASHDIR"/start.sh
     #检查/tmp内核文件
-    for file in $(ls /tmp | grep -v [/$] | grep -v ' ' | grep -Ev ".*(zip|7z|tar)$" | grep -iE 'CrashCore|^clash$|^clash-linux.*|^mihomo.*|^sing.*box'); do
+    for file in $(ls /tmp | grep -v [/$] | grep -v ' ' | grep -Ev ".*(zip|7z|tar)$" | grep -iE 'CrashCore|^sing.*box'); do
         echo -e "发现可用的内核文件： \033[36m/tmp/$file\033[0m "
         read -p "是否加载(会停止当前服务)？(1/0) > " res
         [ "$res" = 1 ] && {
