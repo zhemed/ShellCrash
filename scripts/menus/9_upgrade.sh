@@ -411,7 +411,7 @@ setcore() {
         echo -e " >>\033[32m$meta_v   		\033[33m占用略高\033[0m"
         echo -e "  说明文档：	\033[36;4mhttps://wiki.metacubex.one\033[0m"
         echo -e "2 \033[43;30m SingBox \033[0m：	\033[32m官方内核\033[0m"
-        echo -e " >>\033[32m1.10.7  	\033[33mSagerNet 官方 sing-box\033[0m"
+        echo -e " >>\033[32m1.13.18  	\033[33mSagerNet 官方 sing-box\033[0m"
         echo -e "  说明文档：	\033[36;4mhttps://sing-box.sagernet.org\033[0m"
         [ "$zip_type" = 'upx' ] && {
             echo -e "4 \033[43;30m Clash \033[0m：	\033[32m占用低\033[0m"
