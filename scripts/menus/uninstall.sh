@@ -50,6 +50,7 @@ uninstall() {
         rm -rf /www/clash
         rm -rf /tmp/ShellCrash
         rm -rf /usr/bin/crash
+rm -rf /usr/local/bin/crash /usr/local/bin/sc /usr/local/bin/mm 2>/dev/null
         sed -i '/0:7890/d' /etc/passwd 2>/dev/null
         userdel -r shellcrash 2>/dev/null
         nvram set script_usbmount="" 2>/dev/null
