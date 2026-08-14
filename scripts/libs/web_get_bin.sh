@@ -2,6 +2,8 @@
 
 get_bin() { #专用于项目内部文件的下载
     [ -z "$update_url" ] && update_url=https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main
+    #raw.githubusercontent.com存在无法刷新的CDN缓存，自动切换至jsDelivr避免拉取到旧文件
+    [ -n "$update_url" ] && update_url=$(echo "$update_url" | sed 's#https://raw.githubusercontent.com/zhemed/ShellCrash/main#https://testingcf.jsdelivr.net/gh/zhemed/ShellCrash@main#')
     if [ -n "$url_id" ]; then
 		[ -n "$release_type" ] && rt="$release_type" || rt=master
         echo "$2" | grep -q '^bin/' && rt=update #/bin文件改为在update分支下载
