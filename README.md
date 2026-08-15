@@ -46,6 +46,11 @@
 ### 在线安装：<br>
 
 ~**标准 Linux 设备（curl）：**<br>
+## 环境要求
+
+- Docker **29.7.2** + Docker Compose **v5.4.0**（项目标准版本）
+- 部署前运行 `./check-docker-env.sh` 校验环境
+
 ```shell
 sudo -i #切换到root用户，如果需要密码，请输入密码
 export url='https://raw.githubusercontent.com/zhemed/ShellCrash/main' && bash -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
